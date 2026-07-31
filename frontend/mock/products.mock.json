@@ -1,0 +1,134 @@
+[
+  {
+    "id": 0,
+    "image": "/OurProducts/Syltherine.png",
+    "name": "Syltherine",
+    "description": "Stylish cafe chair",
+    "currentPrice": "Rp 2.500.000",
+    "offer": true,
+    "oldPrice": "Rp 3.500.000",
+    "discount": 30,
+    "isNew": false
+  },
+  {
+    "id": 1,
+    "image": "/OurProducts/Leviosa.png",
+    "name": "Leviosa",
+    "description": "Stylish cafe chair",
+    "currentPrice": "Rp 2.500.000",
+    "offer": false,
+    "oldPrice": "",
+    "discount": 0,
+    "isNew": false
+  },
+  {
+    "id": 2,
+    "image": "/OurProducts/Lolito.png",
+    "name": "Lolito",
+    "description": "Luxury big sofa",
+    "currentPrice": "Rp 7.000.000",
+    "offer": true,
+    "oldPrice": "Rp 14.000.000",
+    "discount": 50,
+    "isNew": false
+  },
+  {
+    "id": 3,
+    "image": "/OurProducts/Respira.png",
+    "name": "Respira",
+    "description": "Outdoor bar table and stool",
+    "currentPrice": "Rp 500.000",
+    "offer": false,
+    "oldPrice": "",
+    "discount": 0,
+    "isNew": true
+  },
+  {
+    "id": 4,
+    "image": "/OurProducts/Grifo.png",
+    "name": "Grifo",
+    "description": "Night lamp",
+    "currentPrice": "Rp 1.500.000",
+    "offer": false,
+    "oldPrice": "",
+    "discount": 0,
+    "isNew": false
+  },
+  {
+    "id": 5,
+    "image": "/OurProducts/Muggo.png",
+    "name": "Muggo",
+    "description": "Small mug",
+    "currentPrice": "Rp 150.000",
+    "offer": false,
+    "oldPrice": "",
+    "discount": 0,
+    "isNew": true
+  },
+  {
+    "id": 6,
+    "image": "/OurProducts/Pingky.png",
+    "name": "Pingky",
+    "description": "Cute bed set",
+    "currentPrice": "Rp 7.000.000",
+    "offer": true,
+    "oldPrice": "Rp 14.000.000",
+    "discount": 50,
+    "isNew": false
+  },
+  {
+    "id": 7,
+    "image": "/OurProducts/Potty.png",
+    "name": "Potty",
+    "description": "Minimalist flower pot",
+    "currentPrice": "Rp 500.000",
+    "offer": false,
+    "oldPrice": "",
+    "discount": 0,
+    "isNew": true
+  },
+  {
+    "id": 8,
+    "image": "/OurProducts/Syltherine.png",
+    "name": "Syltherine",
+    "description": "Stylish cafe chair",
+    "currentPrice": "Rp 2.500.000",
+    "offer": true,
+    "oldPrice": "Rp 3.500.000",
+    "discount": 30,
+    "isNew": false
+  },
+  {
+    "id": 9,
+    "image": "/OurProducts/Leviosa.png",
+    "name": "Leviosa",
+    "description": "Stylish cafe chair",
+    "currentPrice": "Rp 2.500.000",
+    "offer": false,
+    "oldPrice": "",
+    "discount": 0,
+    "isNew": false
+  },
+  {
+    "id": 10,
+    "image": "/OurProducts/Lolito.png",
+    "name": "Lolito",
+    "description": "Luxury big sofa",
+    "currentPrice": "Rp 7.000.000",
+    "offer": true,
+    "oldPrice": "Rp 14.000.000",
+    "discount": 50,
+    "isNew": false
+  },
+  {
+    "id": 11,
+    "image": "/OurProducts/Respira.png",
+    "name": "Respira",
+    "description": "Outdoor bar table and stool",
+    "currentPrice": "Rp 500.000",
+    "offer": false,
+    "oldPrice": "",
+    "discount": 0,
+    "isNew": true
+  }
+]
