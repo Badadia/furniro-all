@@ -1,9 +1,9 @@
-import RoomInspiration from "../components/Carousel/RoomInspiration";
-import Categories from "../components/Categories/Categories";
-import Container from "../components/Container";
-import Hero from "../components/Hero/Hero";
-import Mosaic from "../components/Mosaic/Mosaic";
-import ProductGrid from "../components/ProductGrid/ProductGrid";
+import RoomCarousel from "../components/Carousel/RoomCarousel"
+import Categories from "../components/Categories/Categories"
+import Container from "../components/Container"
+import Hero from "../components/Hero/Hero"
+import Mosaic from "../components/Mosaic/Mosaic"
+import ProductGrid from "../components/ProductGrid/ProductGrid"
 
 const Home = () => {
   return (
@@ -18,12 +18,12 @@ const Home = () => {
         <ProductGrid></ProductGrid>
       </Container>
       <Container>
-        <RoomInspiration></RoomInspiration>
+        <RoomCarousel></RoomCarousel>
       </Container>
       <Container>
         <Mosaic></Mosaic>
       </Container>
     </div>
-  );
-};
-export default Home;
+  )
+}
+export default Home
