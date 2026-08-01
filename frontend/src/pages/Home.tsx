@@ -1,4 +1,4 @@
-import RoomCarousel from "../components/Carousel/RoomCarousel";
+import RoomInspiration from "../components/Carousel/RoomInspiration";
 import Categories from "../components/Categories/Categories";
 import Container from "../components/Container";
 import Hero from "../components/Hero/Hero";
@@ -18,7 +18,7 @@ const Home = () => {
         <ProductGrid></ProductGrid>
       </Container>
       <Container>
-        <RoomCarousel></RoomCarousel>
+        <RoomInspiration></RoomInspiration>
       </Container>
       <Container>
         <Mosaic></Mosaic>
