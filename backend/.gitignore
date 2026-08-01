@@ -1,12 +1,17 @@
 # Dependencies
 node_modules/
 
-# Build
+# Build & TypeScript Output
 dist/
 build/
-coverage/
+*.tsbuildinfo
 
-# Logs
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs & Debug
 logs/
 *.log
 npm-debug.log*
@@ -14,15 +19,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Environment variables
-.env
-.env.*
-!.env.example
-
-# TypeScript
-*.tsbuildinfo
-
-# IDEs
+# IDEs & Editor configs
 .vscode/
 .idea/
 
@@ -30,26 +27,14 @@ pnpm-debug.log*
 .DS_Store
 Thumbs.db
 
-# Temporary files
+# Runtime & Temporary files
 tmp/
 temp/
 .cache/
-
-# Runtime
 pids/
 *.pid
 *.seed
 *.pid.lock
-
-# ESLint cache
-.eslintcache
-
-# Prettier cache
-.prettier-cache
-
-# Parcel/Vite cache (caso use futuramente)
-.parcel-cache/
-.vite/
 
 # Test output
 coverage/
@@ -58,9 +43,6 @@ coverage/
 # Local databases
 *.sqlite
 *.sqlite3
-
-# Firebase
-.firebase/
 
 # Misc
 *.tgz
