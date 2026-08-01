@@ -8,9 +8,7 @@ import ProductGrid from "../components/ProductGrid/ProductGrid"
 const Home = () => {
   return (
     <div>
-      <Container>
-        <Hero></Hero>
-      </Container>
+      <Hero />
       <Container>
         <Categories></Categories>
       </Container>
@@ -24,6 +22,6 @@ const Home = () => {
         <Mosaic></Mosaic>
       </Container>
     </div>
-  )
-}
-export default Home
+  );
+};
+export default Home;
