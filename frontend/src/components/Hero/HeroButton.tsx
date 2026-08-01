@@ -1,15 +1,24 @@
-import clsx from "clsx";
+import { twMerge } from "tailwind-merge";
 
-const HeroButton = () => {
+type HeroButtonProps = {
+  label: string;
+  className?: string;
+  onClick?: () => void;
+};
+
+const HeroButton = ({ label, className, onClick }: HeroButtonProps) => {
   return (
     <button
-      className={clsx(
-        "mx-auto w-fit cursor-pointer bg-over-secundary px-16 py-4 text-sm font-bold text-white transition hover:scale-105",
-        "lg:mx-0 xl:px-18",
-        "xl:py-6.25 xl:text-base",
+      type="button"
+      onClick={onClick}
+      className={twMerge(
+        "h-18.5 w-55.5 bg-over-secundary font-poppins text-[16px] font-bold uppercase text-primary",
+        "cursor-pointer transition hover:bg-over-secundary/90 hover:tracking-widest",
+        "max-xxs:h-14 max-xxs:w-40",
+        className,
       )}
     >
-      BUY NOW
+      {label}
     </button>
   );
 };

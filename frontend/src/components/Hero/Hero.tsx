@@ -39,7 +39,7 @@ const Hero = () => {
           tellus, luctus nec ullamcorper mattis.
         </span>
 
-        <HeroButton />
+        <HeroButton label="BUY NOW" />
       </div>
     </section>
   );
