@@ -1,51 +1,47 @@
+import clsx from "clsx";
 import HeroButton from "./HeroButton";
 
 const Hero = () => {
   return (
-    <div
-      className="
-        flex items-baseline justify-center
-        bg-[url('/Images/Hero.jpg')] bg-cover bg-center bg-no-repeat
-        px-4 py-20 font-poppins
-        md:h-[716.83px] md:justify-end md:pt-38.25 md:pr-14.5 md:pl-0
-      ">
+    <section className="relative mx-auto mb-64 sm:mb-20 lg:mb-0">
+      <img
+        className="max-h-60 w-screen object-cover sm:max-h-70 md:max-h-100 lg:max-h-150 xl:max-h-179"
+        src="/Images/Hero.jpg"
+        alt="Imagem de interior de sala"
+      />
       <div
-        className="
-          flex w-full max-w-160.75 flex-col rounded-[10px]
-          bg-secundary
-          pt-15.5 pr-14 pb-9.25 pl-10.25
-        "
+        className={clsx(
+          "absolute inset-x-0 mx-auto -mt-14 flex max-w-2xs flex-col rounded-[10px] bg-secundary p-6 pt-7",
+          "sm:-mt-40 sm:max-w-lg",
+          "md:-mt-50 md:max-w-160.75",
+          "lg:right-10 lg:bottom-12 lg:left-auto lg:mx-0 lg:mt-0 lg:p-7 lg:pt-10",
+          "xl:right-15.75 xl:bottom-29.25 xl:p-9.25 xl:pt-14",
+        )}
       >
-        <h2 className="mb-1 text-[16px] font-semibold tracking-[3px] text-primary-text">
+        <span className="mb-1 text-sm font-semibold tracking-[3px] text-primary-text xl:text-base">
           New Arrival
-        </h2>
-
+        </span>
         <h1
-          className="
-            mb-4.25 text-[32px] font-bold leading-12 text-over-secundary
-            sm:text-[42px] sm:leading-14
-            md:text-[52px] md:leading-16.25
-            max-xxs:text-[22px] max-xxs:leading-8
-          "
+          className={clsx(
+            "mb-2 text-2xl leading-8 font-bold text-over-secundary",
+            "xl:mb-4.25 xl:text-[52px] xl:leading-16.25",
+          )}
         >
-          Discovery Our <br />
-          New Collection
+          Discover Our <br /> New Collection
         </h1>
-
-        <p
-          className="
-            mb-11.5 font-medium leading-8 text-primary-text
-            md:text-[18px]
-            max-xxs:mb-8 max-xxs:text-[14px] max-xxs:leading-7
-          "
+        <span
+          className={clsx(
+            "mb-6 leading-6 font-medium text-primary-text",
+            "xl:mb-11.5 xl:text-lg",
+          )}
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
           tellus, luctus nec ullamcorper mattis.
-        </p>
+        </span>
 
-        <HeroButton label="Buy Now" />
+        <HeroButton />
       </div>
-    </div>
+    </section>
   );
 };
 
