@@ -1,9 +1,9 @@
-import { BrowserRouter, Routes, Route, Outlet } from "react-router"
-import { Toaster } from "react-hot-toast"
-import Container from "./components/Container"
-import Header from "./components/Header/Header"
-import Footer from "./components/Footer/Footer"
-import Home from "./pages/Home"
+import { Toaster } from "react-hot-toast";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router";
+import Container from "./components/Container";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import Home from "./pages/Home";
 
 function RootLayout() {
   return (
@@ -15,11 +15,9 @@ function RootLayout() {
 
       <Outlet />
 
-      <Container>
-        <Footer />
-      </Container>
+      <Footer />
     </>
-  )
+  );
 }
 
 export default function App() {
@@ -35,5 +33,5 @@ export default function App() {
         </Route>
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
