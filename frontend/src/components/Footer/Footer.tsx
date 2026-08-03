@@ -40,11 +40,23 @@ export default function Footer() {
           </div>
 
           <div className="flex gap-12 sm:gap-20 md:gap-30">
-            <Links title="Links" links={["Home", "Shop", "About", "Contact"]} />
+            <Links
+              title="Links"
+              links={[
+                { title: "Home", href: "/" },
+                { title: "Shop", href: "/shop" },
+                { title: "About" },
+                { title: "Contact" },
+              ]}
+            />
 
             <Links
               title="Help"
-              links={["Payment Options", "Returns", "Privacy Policies"]}
+              links={[
+                { title: "Payment Options" },
+                { title: "Returns" },
+                { title: "Privacy Policies" },
+              ]}
             />
           </div>
 

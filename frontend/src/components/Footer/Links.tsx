@@ -1,6 +1,11 @@
+import { Link } from "react-router";
+
 export type LinksProps = {
   title: string;
-  links: string[];
+  links: {
+    title: string;
+    href?: string;
+  }[];
 };
 
 export function Links({ title, links }: LinksProps) {
@@ -10,9 +15,9 @@ export function Links({ title, links }: LinksProps) {
 
       <nav className="flex flex-col items-start justify-center gap-4 font-medium text-black sm:gap-11.5">
         {links.map((link, index) => (
-          <a key={index} href="#">
-            {link}
-          </a>
+          <Link key={index} to={link.href || "#"}>
+            {link.title}
+          </Link>
         ))}
       </nav>
     </div>

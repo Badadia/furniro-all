@@ -1,8 +1,8 @@
+import clsx from "clsx";
+import { useState } from "react";
 import { LuMenu } from "react-icons/lu";
 import NavMenu from "./NavMenu";
-import { useState } from "react";
 import RightMenu from "./RigthMenu";
-import clsx from "clsx";
 
 type MobileMenuProps = {
   className?: string;
@@ -15,7 +15,7 @@ const MobileMenu = ({ className }: MobileMenuProps) => {
         size={32}
         className={clsx("hover:cursor-pointer hover:scale-110 transition-all")}
         onClick={() => setAtivo(!ativo)}
-      ></LuMenu>
+      />
       <NavMenu
         className={clsx(
           "h-[calc(100vh-100px)] max-w-[50vw] min-w-62.5",
@@ -29,7 +29,7 @@ const MobileMenu = ({ className }: MobileMenuProps) => {
           },
         )}
       >
-        <RightMenu className={clsx("mt-6")}></RightMenu>
+        <RightMenu className={clsx("mt-6")} />
       </NavMenu>
     </div>
   );

@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { Link } from "react-router";
 
 type RightMenuProps = {
   className?: string;
@@ -14,13 +15,13 @@ const RightMenu = ({ className }: RightMenuProps) => {
           className={clsx("max-h-[18.66px]")}
         ></img>
       </a>
-      <a className={clsx(LinkHover)}>
+      <Link to="/cart" className={clsx(LinkHover)}>
         <img
           src="/Icons/shop.svg"
           alt="Ícone de usuário"
           className={clsx("max-h-[22.05px]")}
         ></img>
-      </a>
+      </Link>
     </div>
   );
 };
