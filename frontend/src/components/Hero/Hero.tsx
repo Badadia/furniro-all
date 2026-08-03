@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { Link } from "react-router";
 import HeroButton from "./HeroButton";
 
 const Hero = () => {
@@ -39,7 +40,9 @@ const Hero = () => {
           tellus, luctus nec ullamcorper mattis.
         </span>
 
-        <HeroButton label="BUY NOW" />
+        <Link to="/shop">
+          <HeroButton label="BUY NOW" />
+        </Link>
       </div>
     </section>
   );
