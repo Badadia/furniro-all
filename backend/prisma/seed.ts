@@ -1,0 +1,213 @@
+import { PrismaClient } from "@prisma/client"
+
+const prisma = new PrismaClient()
+
+const cloudinaryBaseUrl =
+  "https://res.cloudinary.com/furniro-demo/image/upload/v1/products"
+
+const initialProducts = [
+  {
+    sku: "SS001",
+    name: "Asgaard Sofa",
+    category: "Living",
+    price: 2500000.0,
+    discount: 0,
+    description:
+      "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio.",
+    fullDescription:
+      "Embodying the raw, wayward spirit of rock 'n' roll, the Kilburn portable active stereo speaker takes the unmistakable look and sound of Marshall, unplugs the chords, and takes the show on the road. Weighing in under 7 pounds, the Kilburn is a lightweight piece of vintage styled engineering.",
+    additionalInfo:
+      "General Dimensions: W: 250cm x D: 92cm x H: 80cm. Material: Solid Wood Frame, Premium Fabric Upholstery.",
+    image: `${cloudinaryBaseUrl}/asgaard-sofa.png`,
+    additionalImages: JSON.stringify([
+      `${cloudinaryBaseUrl}/asgaard-sofa-1.png`,
+      `${cloudinaryBaseUrl}/asgaard-sofa-2.png`,
+      `${cloudinaryBaseUrl}/asgaard-sofa-3.png`,
+      `${cloudinaryBaseUrl}/asgaard-sofa-4.png`,
+    ]),
+    colors: JSON.stringify(["#816DFA", "#000000", "#B88E2F"]),
+    sizes: JSON.stringify(["L", "XL", "XS"]),
+    isNew: false,
+  },
+  {
+    sku: "SS002",
+    name: "Syltherine",
+    category: "Dining",
+    price: 3500000.0,
+    discount: 30,
+    description: "Stylish cafe chair",
+    fullDescription:
+      "A stylish and comfortable cafe chair designed for modern dining rooms and cafes. Built with high quality solid wood legs and durable seating surface.",
+    additionalInfo:
+      "Weight capacity: 120kg. Material: Beech wood and Molded Polypropylene.",
+    image: `${cloudinaryBaseUrl}/syltherine.png`,
+    additionalImages: JSON.stringify([`${cloudinaryBaseUrl}/syltherine.png`]),
+    colors: JSON.stringify(["#B88E2F", "#000000"]),
+    sizes: JSON.stringify(["S", "M", "L"]),
+    isNew: false,
+  },
+  {
+    sku: "SS003",
+    name: "Leviosa",
+    category: "Dining",
+    price: 2500000.0,
+    discount: 0,
+    description: "Stylish cafe chair",
+    fullDescription:
+      "Minimalist and ergonomic cafe chair with sleek contours. Perfect for home dining areas and commercial spaces.",
+    additionalInfo: "Dimensions: 45 x 45 x 85 cm. Minimal assembly required.",
+    image: `${cloudinaryBaseUrl}/leviosa.png`,
+    additionalImages: JSON.stringify([`${cloudinaryBaseUrl}/leviosa.png`]),
+    colors: JSON.stringify(["#FFFFFF", "#000000"]),
+    sizes: JSON.stringify(["M", "L"]),
+    isNew: false,
+  },
+  {
+    sku: "SS004",
+    name: "Lolito",
+    category: "Living",
+    price: 14000000.0,
+    discount: 50,
+    description: "Luxury big sofa",
+    fullDescription:
+      "Expansive luxury sofa crafted for ultimate relaxation in spacious living rooms. Upholstered in soft, premium linen blend fabric with deep cushioning.",
+    additionalInfo: "Seating capacity: 4-5 adults. High-density foam padding.",
+    image: `${cloudinaryBaseUrl}/lolito.png`,
+    additionalImages: JSON.stringify([`${cloudinaryBaseUrl}/lolito.png`]),
+    colors: JSON.stringify(["#B88E2F", "#816DFA"]),
+    sizes: JSON.stringify(["XL", "XXL"]),
+    isNew: false,
+  },
+  {
+    sku: "SS005",
+    name: "Respira",
+    category: "Living",
+    price: 500000.0,
+    discount: 0,
+    description: "Outdoor bar table and stool",
+    fullDescription:
+      "Weather-resistant outdoor bar table set complete with matching stools. Ideal for balconies, patios, and gardens.",
+    additionalInfo: "UV-resistant powder coating. Rust-proof aluminum frame.",
+    image: `${cloudinaryBaseUrl}/respira.png`,
+    additionalImages: JSON.stringify([`${cloudinaryBaseUrl}/respira.png`]),
+    colors: JSON.stringify(["#000000", "#FFFFFF"]),
+    sizes: JSON.stringify(["M"]),
+    isNew: true,
+  },
+  {
+    sku: "SS006",
+    name: "Grifo",
+    category: "Bedroom",
+    price: 1500000.0,
+    discount: 0,
+    description: "Night lamp",
+    fullDescription:
+      "Warm ambient night lamp featuring an elegant wooden base and soft cotton lampshade for cozy bedtime reading.",
+    additionalInfo: "Voltage: 220V. Bulb type: E27 LED (included).",
+    image: `${cloudinaryBaseUrl}/grifo.png`,
+    additionalImages: JSON.stringify([`${cloudinaryBaseUrl}/grifo.png`]),
+    colors: JSON.stringify(["#B88E2F"]),
+    sizes: JSON.stringify(["Standard"]),
+    isNew: false,
+  },
+  {
+    sku: "SS007",
+    name: "Muggo",
+    category: "Dining",
+    price: 150000.0,
+    discount: 0,
+    description: "Small mug",
+    fullDescription:
+      "Handmade ceramic mug with matte finish. Retains heat effectively for coffee and tea lovers.",
+    additionalInfo: "Capacity: 350ml. Dishwasher and microwave safe.",
+    image: `${cloudinaryBaseUrl}/muggo.png`,
+    additionalImages: JSON.stringify([`${cloudinaryBaseUrl}/muggo.png`]),
+    colors: JSON.stringify(["#000000", "#FFFFFF", "#816DFA"]),
+    sizes: JSON.stringify(["350ml"]),
+    isNew: true,
+  },
+  {
+    sku: "SS008",
+    name: "Pingky",
+    category: "Bedroom",
+    price: 14000000.0,
+    discount: 50,
+    description: "Cute bed set",
+    fullDescription:
+      "Complete queen size bed frame and headboard with soft pastel velvet finish. Brings warmth and charm to any bedroom.",
+    additionalInfo:
+      "Fits Standard Queen Mattress (160x200cm). Solid pine slats included.",
+    image: `${cloudinaryBaseUrl}/pingky.png`,
+    additionalImages: JSON.stringify([`${cloudinaryBaseUrl}/pingky.png`]),
+    colors: JSON.stringify(["#816DFA", "#B88E2F"]),
+    sizes: JSON.stringify(["Queen", "King"]),
+    isNew: false,
+  },
+  {
+    sku: "SS009",
+    name: "Potty",
+    category: "Bedroom",
+    price: 500000.0,
+    discount: 0,
+    description: "Minimalist flower pot",
+    fullDescription:
+      "Sleek terracotta ceramic flower pot designed for indoor succulents and houseplants.",
+    additionalInfo: "Includes drainage hole and matching saucer dish.",
+    image: `${cloudinaryBaseUrl}/potty.png`,
+    additionalImages: JSON.stringify([`${cloudinaryBaseUrl}/potty.png`]),
+    colors: JSON.stringify(["#B88E2F", "#FFFFFF"]),
+    sizes: JSON.stringify(["S", "M"]),
+    isNew: true,
+  },
+]
+
+const categories = ["Dining", "Living", "Bedroom"]
+const generatedProducts = Array.from({ length: 23 }).map((_, index) => {
+  const base = initialProducts[index % initialProducts.length]
+  const itemNum = index + 10
+  const category = categories[index % categories.length]
+  const price = base.price + index * 100000
+  return {
+    sku: `SS${String(itemNum).padStart(3, "0")}`,
+    name: `${base.name} Vol.${itemNum}`,
+    category: category,
+    price: price,
+    discount: base.discount,
+    description: base.description,
+    fullDescription: base.fullDescription,
+    additionalInfo: base.additionalInfo,
+    image: base.image,
+    additionalImages: base.additionalImages,
+    colors: base.colors,
+    sizes: base.sizes,
+    isNew: index % 3 === 0,
+  }
+})
+
+async function main() {
+  console.log("🌱 Iniciando o seed do banco de dados SQLite com Prisma...")
+
+  await prisma.product.deleteMany()
+  console.log("🧹 Produtos antigos removidos.")
+
+  const allProducts = [...initialProducts, ...generatedProducts]
+
+  for (const product of allProducts) {
+    await prisma.product.create({
+      data: product,
+    })
+  }
+
+  console.log(
+    `✅ Seed concluído com sucesso! Total de ${allProducts.length} produtos cadastrados com URLs do Cloudinary.`,
+  )
+}
+
+main()
+  .catch((e) => {
+    console.error("❌ Erro durante a execução do seed:", e)
+    process.exit(1)
+  })
+  .finally(async () => {
+    await prisma.$disconnect()
+  })
