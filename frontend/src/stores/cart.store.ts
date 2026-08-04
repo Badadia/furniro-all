@@ -24,8 +24,10 @@ interface CartState {
   decreaseQuantity: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
+  isEmpty: () => boolean;
 
   getItemQuantity: (id: string) => number;
+  getItemSubtotal: (id: string) => number;
   getTotalItems: () => number;
   getSubtotal: () => number;
   getTotal: () => number;
@@ -101,8 +103,15 @@ export const useCartStore = create<CartState>()(
 
       clearCart: () => set({ items: [] }),
 
+      isEmpty: () => get().items.length === 0,
+
       getItemQuantity: (id) => {
         return get().items.find((item) => item.id === id)?.quantity ?? 0;
+      },
+
+      getItemSubtotal: (id) => {
+        const item = get().items.find((item) => item.id === id);
+        return item ? item.price * item.quantity : 0;
       },
 
       getTotalItems: () => {

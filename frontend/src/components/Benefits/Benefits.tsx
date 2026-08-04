@@ -25,8 +25,8 @@ const benefits = [
 
 function Benefits() {
   return (
-    <div className="w-full max-w-[1440px] mx-auto px-4 bg-[#FAF3EA]">
-      <div className="w-full max-w-[1334px] mx-auto flex flex-wrap justify-between items-center gap-y-8 py-10 lg:py-[100px]">
+    <div className="w-full mx-auto px-4 bg-[#FAF3EA]">
+      <div className="w-full max-w-333.5 mx-auto flex flex-wrap justify-center sm:justify-between items-center gap-y-8 py-10 lg:py-25">
         {benefits.map((benefit) => (
           <BenefitItem
             key={benefit.title}
