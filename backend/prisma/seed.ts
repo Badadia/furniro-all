@@ -1,14 +1,15 @@
-import { PrismaClient } from "@prisma/client"
+import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 const cloudinaryBaseUrl =
-  "https://res.cloudinary.com/furniro-demo/image/upload/v1/products"
+  "https://res.cloudinary.com/furniro-demo/image/upload/v1/products";
 
 const initialProducts = [
   {
     sku: "SS001",
     name: "Asgaard Sofa",
+    slug: "asgaard-sofa",
     category: "Living",
     price: 2500000.0,
     discount: 0,
@@ -32,6 +33,7 @@ const initialProducts = [
   {
     sku: "SS002",
     name: "Syltherine",
+    slug: "syltherine",
     category: "Dining",
     price: 3500000.0,
     discount: 30,
@@ -49,6 +51,7 @@ const initialProducts = [
   {
     sku: "SS003",
     name: "Leviosa",
+    slug: "leviosa",
     category: "Dining",
     price: 2500000.0,
     discount: 0,
@@ -65,6 +68,7 @@ const initialProducts = [
   {
     sku: "SS004",
     name: "Lolito",
+    slug: "lolito",
     category: "Living",
     price: 14000000.0,
     discount: 50,
@@ -81,6 +85,7 @@ const initialProducts = [
   {
     sku: "SS005",
     name: "Respira",
+    slug: "respira",
     category: "Living",
     price: 500000.0,
     discount: 0,
@@ -97,6 +102,7 @@ const initialProducts = [
   {
     sku: "SS006",
     name: "Grifo",
+    slug: "grifo",
     category: "Bedroom",
     price: 1500000.0,
     discount: 0,
@@ -113,6 +119,7 @@ const initialProducts = [
   {
     sku: "SS007",
     name: "Muggo",
+    slug: "muggo",
     category: "Dining",
     price: 150000.0,
     discount: 0,
@@ -129,6 +136,7 @@ const initialProducts = [
   {
     sku: "SS008",
     name: "Pingky",
+    slug: "pingky",
     category: "Bedroom",
     price: 14000000.0,
     discount: 50,
@@ -146,6 +154,7 @@ const initialProducts = [
   {
     sku: "SS009",
     name: "Potty",
+    slug: "potty",
     category: "Bedroom",
     price: 500000.0,
     discount: 0,
@@ -159,17 +168,18 @@ const initialProducts = [
     sizes: JSON.stringify(["S", "M"]),
     isNew: true,
   },
-]
+];
 
-const categories = ["Dining", "Living", "Bedroom"]
+const categories = ["Dining", "Living", "Bedroom"];
 const generatedProducts = Array.from({ length: 23 }).map((_, index) => {
-  const base = initialProducts[index % initialProducts.length]
-  const itemNum = index + 10
-  const category = categories[index % categories.length]
-  const price = base.price + index * 100000
+  const base = initialProducts[index % initialProducts.length];
+  const itemNum = index + 10;
+  const category = categories[index % categories.length];
+  const price = base.price + index * 100000;
   return {
     sku: `SS${String(itemNum).padStart(3, "0")}`,
     name: `${base.name} Vol.${itemNum}`,
+    slug: `${base.slug}-vol-${itemNum}`,
     category: category,
     price: price,
     discount: base.discount,
@@ -181,33 +191,33 @@ const generatedProducts = Array.from({ length: 23 }).map((_, index) => {
     colors: base.colors,
     sizes: base.sizes,
     isNew: index % 3 === 0,
-  }
-})
+  };
+});
 
 async function main() {
-  console.log("🌱 Iniciando o seed do banco de dados SQLite com Prisma...")
+  console.log("🌱 Iniciando o seed do banco de dados SQLite com Prisma...");
 
-  await prisma.product.deleteMany()
-  console.log("🧹 Produtos antigos removidos.")
+  await prisma.product.deleteMany();
+  console.log("🧹 Produtos antigos removidos.");
 
-  const allProducts = [...initialProducts, ...generatedProducts]
+  const allProducts = [...initialProducts, ...generatedProducts];
 
   for (const product of allProducts) {
     await prisma.product.create({
       data: product,
-    })
+    });
   }
 
   console.log(
     `✅ Seed concluído com sucesso! Total de ${allProducts.length} produtos cadastrados com URLs do Cloudinary.`,
-  )
+  );
 }
 
 main()
   .catch((e) => {
-    console.error("❌ Erro durante a execução do seed:", e)
-    process.exit(1)
+    console.error("❌ Erro durante a execução do seed:", e);
+    process.exit(1);
   })
   .finally(async () => {
-    await prisma.$disconnect()
-  })
+    await prisma.$disconnect();
+  });
