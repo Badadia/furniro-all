@@ -20,6 +20,8 @@
 
   --footer: #d9d9d9;
   --footer-gray: #9f9f9f;
+
+  --cart: #F9F1E7;
 }
 
 @theme {
@@ -44,6 +46,8 @@
 
   --color-footer-gray: var(--footer-gray);
   --color-footer: var(--footer);
+  
+  --color-cart: var(--cart);
 
    --animate-slide-loop: loop 40s linear infinite;
 

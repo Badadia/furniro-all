@@ -10,7 +10,7 @@ const Header = () => {
       className={clsx(
         "flex justify-center items-center bg-white",
         "h-25 w-full",
-        "fixed z-50",
+        "sticky z-50 top-0",
         "bg-primary",
       )}
     >
