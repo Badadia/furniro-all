@@ -52,7 +52,7 @@ export class PrismaProductRepository implements Repository<
     const products = await this.prisma.product.findMany();
     return (
       products.find(
-        (product) => product.name.toLowerCase() === slug.toLowerCase(),
+        (product) => product.slug.toLowerCase() === slug.toLowerCase(),
       ) ?? null
     );
   }

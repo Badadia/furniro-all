@@ -9,10 +9,6 @@ import {
 import Service from "../services/iService";
 import Controller from "./iController";
 
-interface ProductParams {
-  identifier: string;
-}
-
 export default class ProductController implements Controller<Product> {
   constructor(
     private productService: Service<
@@ -23,7 +19,7 @@ export default class ProductController implements Controller<Product> {
   ) {}
 
   private getIdentifierFromParams(req: Request): string {
-    const identifier = req.params.identifier ?? req.params.id;
+    const identifier = req.params.slug ?? req.params.id;
     return Array.isArray(identifier) ? identifier[0] : identifier;
   }
 
@@ -78,5 +74,11 @@ export default class ProductController implements Controller<Product> {
     const id = this.getIdentifierFromParams(req);
     await this.productService.delete(id);
     res.status(StatusCodes.NO_CONTENT).send();
+  }
+
+  async findBySlug(req: Request, res: Response) {
+    const slug = this.getIdentifierFromParams(req);
+    const product = await this.productService.findBySlug(slug);
+    res.status(StatusCodes.OK).send(product);
   }
 }
