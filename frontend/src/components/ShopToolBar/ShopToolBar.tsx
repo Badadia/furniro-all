@@ -1,0 +1,126 @@
+import Filter from "./Filter";
+import ShowProduct from "./ShowProduct";
+import SortBy from "./SortBy";
+
+interface ShopToolbarProps {
+
+  // Estados controlados pela página Shop.
+  // A toolbar apenas exibe e atualiza os valores.
+  category: string;
+  onCategoryChange: (category: string) => void;
+
+  sort: string;
+  onSortChange: (sort: string) => void;
+
+  limit: number;
+  onLimitChange: (limit: number) => void;
+
+  
+  // Texto exibido com a quantidade de resultados.
+  resultText: string;
+}
+
+function ShopToolBar({
+  category,
+  onCategoryChange,
+  sort,
+  onSortChange,
+  limit,
+  onLimitChange,
+  resultText,
+}: ShopToolbarProps) {
+  return (
+    <section
+      className="
+        w-full
+        bg-[#FAF3EA]
+      "
+    >
+      <div
+        className="
+          flex flex-wrap items-center justify-between
+          w-full min-h-[100px]
+          gap-6 px-4
+          sm:px-6
+          lg:px-8
+        "
+      >
+        <div
+          className="
+            flex items-center
+            gap-4
+          "
+        >
+          
+          <Filter
+            category={category}
+            onChange={onCategoryChange}
+          />
+
+          <div
+            className="
+              flex items-center
+              gap-6
+            "
+          >
+            <button type="button">
+              <img
+                src="/IconsShopTool/grid.svg"
+                alt="Grid"
+              />
+            </button>
+
+            <button type="button">
+              <img
+                src="/IconsShopTool/list.svg"
+                alt="List"
+              />
+            </button>
+          </div>
+
+          <img
+            src="/IconsShopTool/Line.svg"
+            alt="Line"
+            className="
+              hidden
+              ml-2
+              sm:block
+            "
+          />
+
+          <span
+            className="
+              hidden
+              font-poppins text-[16px] text-black
+              lg:block
+            "
+          >
+            {resultText}
+          </span>
+        </div>
+
+        <div
+          className="
+            mr-2
+            flex items-center
+            gap-4
+            sm:mr-0 sm:gap-6
+          "
+        >
+          
+          <ShowProduct
+            limit={limit}
+            onLimitChange={onLimitChange}
+          />
+
+          <SortBy
+            sort={sort}
+            onSortChange={onSortChange}
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default ShopToolBar;
