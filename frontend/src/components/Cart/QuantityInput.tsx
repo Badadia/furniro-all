@@ -1,10 +1,10 @@
 import { ADDED_TO_CART_MESSAGE } from "@/features/single-product/constants/messages";
 import toast from "react-hot-toast";
-import { useCartStore, type Product } from "../../stores/cart.store";
+import { useCartStore, type CartProduct } from "../../stores/cart.store";
 
 type QuantityInputProps = {
   id: string;
-  item?: Product;
+  item?: CartProduct;
 };
 
 export function QuantityInput({ id, item }: QuantityInputProps) {

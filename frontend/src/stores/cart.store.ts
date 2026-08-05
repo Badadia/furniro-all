@@ -1,25 +1,21 @@
+import type { Product } from "@/types/product";
 import { calculateDiscount } from "@/utils/price";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-// TODO: possivelmente eu altere essa tipagem melhor depois
-export interface Product {
-  id: string;
-  sku: string;
-  name: string;
-  price: number;
-  discount: number;
-  image: string;
-}
+export type CartProduct = Pick<
+  Product,
+  "id" | "sku" | "name" | "price" | "discount" | "image"
+>;
 
-export interface CartItem extends Product {
+export interface CartItem extends CartProduct {
   quantity: number;
 }
 
 interface CartState {
   items: CartItem[];
 
-  addItem: (product: Product, quantity?: number) => void;
+  addItem: (product: CartProduct, quantity?: number) => void;
   removeItem: (id: string) => void;
   increaseQuantity: (id: string) => void;
   decreaseQuantity: (id: string) => void;
