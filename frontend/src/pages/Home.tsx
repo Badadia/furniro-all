@@ -6,20 +6,16 @@ import Mosaic from "../components/Mosaic/Mosaic";
 import ProductGrid from "../components/ProductGrid/ProductGrid";
 
 const Home = () => {
+  // TODO: pegar os produtos da API e passar para o ProductGrid
+
   return (
     <div>
       <Hero />
       <Container>
         <CategoriesGrid />
-      </Container>
-      <Container>
-        <ProductGrid></ProductGrid>
-      </Container>
-      <Container>
-        <RoomCarousel></RoomCarousel>
-      </Container>
-      <Container>
-        <Mosaic></Mosaic>
+        <ProductGrid products={[]} />
+        <RoomCarousel />
+        <Mosaic />
       </Container>
     </div>
   );
