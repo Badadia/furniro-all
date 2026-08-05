@@ -1,33 +1,21 @@
+import { useCartStore } from "@/stores/cart.store";
+import type { Product } from "@/types/product";
+import { calculateDiscount, formatPrice } from "@/utils/price";
 import toast from "react-hot-toast";
 import { Link } from "react-router";
-import share from "/Icons/share.svg";
+import { getImage } from "../../lib/assets";
 import compare from "/Icons/compare.svg";
 import like from "/Icons/like.svg";
-import { getImage } from "../../lib/assets";
+import share from "/Icons/share.svg";
 
 type ProductGridCardProps = {
-  image: string;
-  name: string;
-  description: string;
-  currentPrice: string;
-  offer: boolean;
-  oldPrice?: string;
-  discount?: number;
-  isNew: boolean;
-  href?: string;
+  href: string;
+  product: Product;
 };
 
-const ProductGridCard = ({
-  image,
-  name,
-  description,
-  currentPrice,
-  offer,
-  oldPrice,
-  discount,
-  isNew,
-  href,
-}: ProductGridCardProps) => {
+const ProductGridCard = ({ href, product }: ProductGridCardProps) => {
+  const addItem = useCartStore((s) => s.addItem);
+
   const badgeClass =
     "absolute right-6 top-6 flex h-12 w-12 items-center justify-center rounded-full font-poppins text-[16px] font-medium leading-6 text-primary";
 
@@ -43,13 +31,20 @@ const ProductGridCard = ({
       event.preventDefault();
       event.stopPropagation();
     }
+    addItem(product);
     toast.success(`${name} added to cart!`);
   };
+
+  const { image, discount, name, isNew, description } = product;
+  const offer = discount > 0;
+  const priceWithDiscount = calculateDiscount(product.price, product.discount);
+  const priceWithDiscountFormatted = formatPrice(priceWithDiscount);
+  const price = formatPrice(product.price);
 
   const card = (
     <>
       <div
-        className="relative h-75.25 w-full bg-cover bg-center bg-no-repeat"
+        className="relative h-75.25 w-full bg-cover bg-center bg-no-repeat cursor-pointer"
         style={{ backgroundImage: `url(${getImage(image)})` }}
       >
         {offer && discount !== undefined && (
@@ -70,12 +65,12 @@ const ProductGridCard = ({
 
         <div className="mt-2 flex items-center gap-4">
           <p className="font-poppins font-semibold leading-6 text-primary-text-200">
-            {currentPrice}
+            {priceWithDiscountFormatted}
           </p>
 
-          {offer && oldPrice && (
+          {offer && price && (
             <p className="text-[16px] leading-6 text-[#B0B0B0] line-through">
-              {oldPrice}
+              {price}
             </p>
           )}
         </div>

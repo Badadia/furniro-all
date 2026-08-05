@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.2",
+    "axios": "^1.19.0",
+    "cloudinary": "^2.10.0",
     "clsx": "^2.1.1",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",

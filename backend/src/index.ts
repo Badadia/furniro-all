@@ -1,11 +1,13 @@
-import express, { Request, Response } from "express";
 import cors from "cors";
+import express, { Request, Response } from "express";
 
-import productsRouter from "./routes/productRouter";
 import errorHandler from "./middlewares/errorHandler";
 import { requestLogger } from "./middlewares/loggerMiddleware";
+import productsRouter from "./routes/productRouter";
 
 const app = express();
+
+app.use(cors());
 app.use(express.json());
 app.use(requestLogger);
 app.use(

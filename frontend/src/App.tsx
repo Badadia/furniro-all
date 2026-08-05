@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import SingleProductPage from "./pages/SingleProductPage";
 import { Cart } from "./pages/Cart";
 import Home from "./pages/Home";
+import Shop from "./pages/Shop";
 
 function RootLayout() {
   return (
@@ -36,6 +37,8 @@ export default function App() {
             element={<SingleProductRoute />}
           />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/shop" element={<Shop />} />
+
         </Route>
       </Routes>
     </BrowserRouter>

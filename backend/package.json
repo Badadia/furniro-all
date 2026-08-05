@@ -20,6 +20,8 @@
   "description": "API RESTful para o desafio 2 do Furniro, utilizando Node.js e Express.",
   "dependencies": {
     "@prisma/client": "^6.4.1",
+    "axios": "^1.19.0",
+    "cloudinary": "^2.10.0",
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "http-status-codes": "^2.3.0"
