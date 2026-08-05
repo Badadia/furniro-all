@@ -1,7 +1,8 @@
 import { Toaster } from "react-hot-toast";
-import { BrowserRouter, Outlet, Route, Routes } from "react-router";
+import { BrowserRouter, Outlet, Route, Routes, useParams } from "react-router";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
+import SingleProductPage from "./pages/SingleProductPage";
 import { Cart } from "./pages/Cart";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
@@ -17,6 +18,11 @@ function RootLayout() {
   );
 }
 
+function SingleProductRoute() {
+  const { id, slug } = useParams();
+  return <SingleProductPage key={slug ?? id} />;
+}
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -25,7 +31,11 @@ export default function App() {
           <Route path="/" element={<Home />} />
           {/* <Route path="/shop" element={<Shop />} /> */}
           {/* <Route path="/shop/:category" element={<Shop />} /> */}
-          {/* <Route path="/product/:slug" element={<ProductDetail />} /> */}
+          <Route path="/product/:id" element={<SingleProductRoute />} />
+          <Route
+            path="/product/slug/:slug"
+            element={<SingleProductRoute />}
+          />
           <Route path="/cart" element={<Cart />} />
           <Route path="/shop" element={<Shop />} />
 

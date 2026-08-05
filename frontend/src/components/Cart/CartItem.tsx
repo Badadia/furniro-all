@@ -1,4 +1,5 @@
 import { useCartStore, type CartItem } from "../../stores/cart.store";
+import { getImage } from "../../lib/assets";
 import { formatCurrency } from "../../utils/formats";
 import { QuantityInput } from "./QuantityInput";
 import { RemoveItem } from "./RemoveItem";
@@ -15,7 +16,7 @@ export function CartItem({ item }: CartItemProps) {
   return (
     <div className="grid grid-cols-6 min-w-200 sm:min-w-auto gap-9 mt-8 items-center">
       <img
-        src={image}
+        src={getImage(image)}
         className="w-26.25 h-26.25 object-cover rounded-[10px]"
       />
       <span className="text-footer-gray">{name}</span>

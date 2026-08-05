@@ -1,118 +1,130 @@
 import toast from "react-hot-toast";
-import { useCartStore } from "../../stores/cart.store";
+import { Link } from "react-router";
+import share from "/Icons/share.svg";
+import compare from "/Icons/compare.svg";
+import like from "/Icons/like.svg";
+import { getImage } from "../../lib/assets";
 
 type ProductGridCardProps = {
-  id: string;
-  sku: string;
   image: string;
   name: string;
   description: string;
-  price: number;
-  discount: number;
+  currentPrice: string;
+  offer: boolean;
+  oldPrice?: string;
+  discount?: number;
   isNew: boolean;
+  href?: string;
 };
 
 const ProductGridCard = ({
-  id,
-  sku,
   image,
   name,
   description,
-  price,
+  currentPrice,
+  offer,
+  oldPrice,
   discount,
   isNew,
+  href,
 }: ProductGridCardProps) => {
-  const addItem = useCartStore((state) => state.addItem);
+  const badgeClass =
+    "absolute right-6 top-6 flex h-12 w-12 items-center justify-center rounded-full font-poppins text-[16px] font-medium leading-6 text-primary";
 
-  const formattedPrice = new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-  }).format(price / 100);
+  const handleOverlayAction = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (href) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  };
 
-  function handleAddToCart() {
-    addItem({
-      id,
-      sku,
-      name,
-      price,
-      discount,
-      image,
-    });
+  const handleAddToCart = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (href) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    toast.success(`${name} added to cart!`);
+  };
 
-    toast.success(`${name} adicionado ao carrinho!`);
-  }
-
-  return (
-    <article className="group relative min-w-71.25 overflow-hidden bg-card-product">
+  const card = (
+    <>
       <div
-        className="relative h-75.25 w-full bg-cover bg-center"
-        style={{
-          backgroundImage: `url(${image})`,
-        }}
+        className="relative h-75.25 w-full bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${getImage(image)})` }}
       >
-        {discount > 0 && (
-          <span className="absolute right-6 top-6 flex h-12 w-12 items-center justify-center rounded-full bg-[#E97171] text-primary">
-            -{discount}%
-          </span>
+        {offer && discount !== undefined && (
+          <span className={`${badgeClass} bg-[#E97171]`}>-{discount}%</span>
         )}
 
-        {isNew && (
-          <span className="absolute right-6 top-6 flex h-12 w-12 items-center justify-center rounded-full bg-[#2EC1AC] text-primary">
-            New
-          </span>
-        )}
+        {isNew && <span className={`${badgeClass} bg-[#2EC1AC]`}>New</span>}
       </div>
 
-      <div className="px-4 py-4">
-        <h3 className="font-poppins text-[24px] font-semibold">
+      <div className="h-36.25 px-4 pt-4">
+        <h3 className="font-poppins text-[24px] font-semibold leading-[28.8px] text-primary-text-200">
           {name}
         </h3>
 
-        <p className="mt-2">
+        <p className="mt-2 font-poppins text-[16px] font-medium leading-6 text-over-card-product">
           {description}
         </p>
 
-        <p className="mt-2 font-semibold">
-          {formattedPrice}
-        </p>
+        <div className="mt-2 flex items-center gap-4">
+          <p className="font-poppins font-semibold leading-6 text-primary-text-200">
+            {currentPrice}
+          </p>
+
+          {offer && oldPrice && (
+            <p className="text-[16px] leading-6 text-[#B0B0B0] line-through">
+              {oldPrice}
+            </p>
+          )}
+        </div>
       </div>
 
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 bg-black/70 opacity-0 transition duration-300 group-hover:opacity-100">
         <button
-          type="button"
           onClick={handleAddToCart}
-          className="z-10 h-12 w-55 cursor-pointer bg-white font-semibold"
+          type="button"
+          className="z-10 h-12 w-55.25 cursor-pointer bg-primary font-poppins text-[16px] font-semibold text-over-secundary transition hover:bg-over-secundary hover:text-secundary"
         >
           Add to cart
         </button>
 
         <div className="z-10 flex w-full items-center justify-between px-4">
+          <button
+            type="button"
+            onClick={handleOverlayAction}
+            className="flex gap-px font-poppins text-[16px] font-semibold text-primary transition hover:opacity-80"
+          >
+            <img src={share} alt="" />
+            Share
+          </button>
 
-  <button
-    type="button"
-    className="flex items-center gap-1 font-poppins text-[16px] font-semibold text-white transition hover:opacity-80"
-  >
-    <img src="/Icons/share.svg" alt="Share" />
-    Share
-  </button>
+          <button
+            type="button"
+            onClick={handleOverlayAction}
+            className="flex gap-px font-poppins text-[16px] font-semibold text-primary transition hover:opacity-80"
+          >
+            <img src={compare} alt="" />
+            Compare
+          </button>
 
-  <button
-    type="button"
-    className="flex items-center gap-1 font-poppins text-[16px] font-semibold text-white transition hover:opacity-80"
-  >
-    <img src="/Icons/compare.svg" alt="Compare" />
-    Compare
-  </button>
-
-  <button
-    type="button"
-    className="flex items-center gap-1 font-poppins text-[16px] font-semibold text-white transition hover:opacity-80"
-  >
-    <img src="/Icons/like.svg " alt="Like" />
-    Like
-  </button>
-</div>
+          <button
+            type="button"
+            onClick={handleOverlayAction}
+            className="flex gap-px font-poppins text-[16px] font-semibold text-primary transition hover:opacity-80"
+          >
+            <img src={like} alt="" />
+            Like
+          </button>
+        </div>
       </div>
+    </>
+  );
+
+  return (
+    <article className="group relative min-w-71.25 overflow-hidden bg-card-product">
+      {href ? <Link to={href}>{card}</Link> : card}
     </article>
   );
 };

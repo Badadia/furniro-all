@@ -1,9 +1,8 @@
 import clsx from "clsx";
-import BannerImage from "../../../public/Shop/shop-banner.png";
+import { getImage } from "../../lib/assets";
 
 type PageBannerProps = {
-  topImage?: string;
-  logo?: string;
+  image?: string;
   title: string;
   breadcrumbHome: string;
   breadcrumbCurrent: string;
@@ -13,38 +12,27 @@ type PageBannerProps = {
 const PageBanner = ({
   title,
   className,
-  topImage,
-  logo,
+  image,
   breadcrumbHome,
   breadcrumbCurrent,
 }: PageBannerProps) => {
   return (
     <div className={clsx("relative", className)}>
       <img
-        src={topImage || BannerImage}
+        src={image ? getImage(image) : getImage("shop-banner.png")}
         alt=""
-        className="h-[116px] w-full object-cover sm:h-[216px] md:h-[316px]"
+        className="h-29 w-full object-cover sm:h-54 md:h-79"
       />
 
       <div className="absolute inset-x-0 bottom-6 flex flex-col items-center gap-0 sm:bottom-16 md:bottom-32">
-        {logo && (
-  <div className="relative h-[77px] w-[77px]">
-    <img
-      src={logo}
-      alt=""
-      className="absolute bottom-0 left-1/2 max-h-[43px] max-w-[43px] -translate-x-1/2 object-contain"
-    />
-  </div>
-)}
-
-        <h1 className="font-poppins text-[32px] font-semibold text-primary-text-200 sm:text-[36px] md:text-[42px]">
+        <h1 className="font-poppins text-5xl font-medium text-primary-text-200 sm:text-[36px] md:text-[42px]">
           {title}
         </h1>
 
         <div className="mt-2 flex items-center gap-2 text-sm text-primary-text-200/70 sm:text-base">
-          <span className="font-bold">{breadcrumbHome}</span>
-          <span className="font-bold text-primary-text-200/40">&gt;</span>
-          <span className="font-medium text-primary-text-200">
+          <span className="font-medium">{breadcrumbHome}</span>
+          <span className="font-medium text-primary-text-200/40">&gt;</span>
+          <span className="font-light text-primary-text-200">
             {breadcrumbCurrent}
           </span>
         </div>

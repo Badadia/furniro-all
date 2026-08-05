@@ -65,6 +65,51 @@ O servidor estará rodando em `http://localhost:3000`.
 
 ---
 
+## Executar a API com Docker
+
+### 1. Criar o arquivo de ambiente
+
+Antes de subir o container, crie o arquivo `.env` com as variáveis necessárias. Se existir um exemplo, você pode copiar:
+
+```bash
+cp .env.example .env
+```
+
+### 2. Construir a imagem Docker
+
+No diretório do backend, execute:
+
+```bash
+docker build -t api-furniro .
+```
+
+### 3. Rodar o container
+
+```bash
+docker run -p 3000:3000 --name api-furniro --env-file .env -d api-furniro
+```
+
+O backend ficará disponível em:
+
+```text
+http://localhost:3000
+```
+
+### 4. Verificar o container
+
+```bash
+docker ps -a
+```
+
+### 5. Parar e remover o container
+
+```bash
+docker stop api-furniro
+docker rm api-furniro
+```
+
+---
+
 ## Endpoints principais
 
 ### Produtos
