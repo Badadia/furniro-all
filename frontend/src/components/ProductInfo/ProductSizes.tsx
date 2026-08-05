@@ -7,9 +7,7 @@ type ProductSizesProps = {
 const ProductSizes = ({ sizes, selectedSize, onSelect }: ProductSizesProps) => {
   return (
     <div className="mt-8">
-      <p className="mb-3 text-sm text-gray-500">
-        Size
-      </p>
+      <p className="mb-3 text-sm text-gray-500">Size</p>
 
       <div className="flex gap-4">
         {sizes.map((size) => (
@@ -18,7 +16,7 @@ const ProductSizes = ({ sizes, selectedSize, onSelect }: ProductSizesProps) => {
             onClick={() => onSelect(size)}
             className={`flex h-[30px] w-[30px] items-center justify-center rounded-md text-sm ${
               selectedSize === size
-                ? "bg-primary-text-200 text-white"
+                ? "bg-over-secundary text-white"
                 : "bg-[#F9F1E7]"
             }`}
           >
