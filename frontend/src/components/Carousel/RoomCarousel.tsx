@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react"
 import { Navigation, Pagination } from "swiper/modules"
 import { FiArrowRight, FiChevronRight } from "react-icons/fi"
+import { getImage } from "../../lib/assets"
 
 import "swiper/css"
 import "swiper/css/navigation"
@@ -11,25 +12,25 @@ const rooms = [
     id: 1,
     title: "Inner Peace",
     category: "Bed Room",
-    img: "/Carousel/Carousel1.png",
+    image: "Carousel1.png",
   },
   {
     id: 2,
     title: "Minimalist",
     category: "Dining Room",
-    img: "/Carousel/Carousel2.png",
+    image: "Carousel2.png",
   },
   {
     id: 3,
     title: "Cozy",
     category: "Living Room",
-    img: "/Carousel/Carousel3.png",
+    image: "Carousel3.png",
   },
   {
     id: 4,
     title: "Modern",
     category: "Work Space",
-    img: "/Carousel/Carousel4.png",
+    image: "Carousel4.png",
   },
 ]
 
@@ -86,7 +87,7 @@ export default function RoomCarousel() {
                     }`}
                   >
                     <img
-                      src={room.img}
+                      src={getImage(room.image)}
                       alt={room.title}
                       className="w-full h-full object-cover shadow-md"
                     />
