@@ -1,7 +1,8 @@
 import clsx from "clsx";
+import { getImage } from "../../lib/assets";
 
 type PageBannerProps = {
-  topImage?: string;
+  image?: string;
   title: string;
   breadcrumbHome: string;
   breadcrumbCurrent: string;
@@ -11,14 +12,14 @@ type PageBannerProps = {
 const PageBanner = ({
   title,
   className,
-  topImage,
+  image,
   breadcrumbHome,
   breadcrumbCurrent,
 }: PageBannerProps) => {
   return (
     <div className={clsx("relative", className)}>
       <img
-        src={topImage || "/Shop/shop-banner.png"}
+        src={image ? getImage(image) : getImage("shop-banner.png")}
         alt=""
         className="h-29 w-full object-cover sm:h-54 md:h-79"
       />

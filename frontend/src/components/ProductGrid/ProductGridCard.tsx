@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import share from "/Icons/share.svg";
 import compare from "/Icons/compare.svg";
 import like from "/Icons/like.svg";
+import { getImage } from "../../lib/assets";
 
 type ProductGridCardProps = {
   image: string;
@@ -49,7 +50,7 @@ const ProductGridCard = ({
     <>
       <div
         className="relative h-75.25 w-full bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${image})` }}
+        style={{ backgroundImage: `url(${getImage(image)})` }}
       >
         {offer && discount !== undefined && (
           <span className={`${badgeClass} bg-[#E97171]`}>-{discount}%</span>
