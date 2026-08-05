@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useParams } from "react-router";
 import Benefits from "../components/Benefits/Benefits";
 import Pagination from "../components/Pagination/Pagination";
 import ProductGrid from "../components/ProductGrid/ProductGrid";
@@ -6,8 +7,19 @@ import PageBanner from "../components/Shop/PageBanner";
 import ShopToolBar from "../components/ShopToolBar/ShopToolBar";
 import { useProducts } from "../hooks/UseProducts";
 
+// TODO: colocar isso numa pasta de constantes
+const CATEGORIES = ["Dining", "Living", "Bedroom"];
+
 const Shop = () => {
-  const [category, setCategory] = useState("all");
+  const { category: categoryParam } = useParams();
+
+  const [category, setCategory] = useState(() => {
+    return (
+      CATEGORIES.find(
+        (c) => c.toLowerCase() === categoryParam?.toLowerCase(),
+      ) || "all"
+    );
+  });
   const [sort, setSort] = useState("default");
   const [limit, setLimit] = useState(16);
   const [offset, setOffset] = useState(0);
