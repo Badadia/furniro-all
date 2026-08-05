@@ -1,4 +1,4 @@
-const CLOUDINARY_BASE_URL = import.meta.env.VITE_CLOUDINARY_BASE_URL;
+import { CLOUDINARY_BASE_URL } from "../config/env";
 
 function isAbsoluteUrl(value: string): boolean {
   return /^https?:\/\//i.test(value);

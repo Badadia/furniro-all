@@ -1,9 +1,6 @@
 import { z } from "zod";
 import type { Product } from "@/types/product";
-
-const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:3000";
-const MOCK_BASE_URL = import.meta.env.VITE_MOCK_API_URL ?? "http://localhost:3001";
-const USE_MOCK = import.meta.env.VITE_USE_MOCK === "true";
+import { API_BASE_URL, MOCK_BASE_URL, USE_MOCK } from "@/config/env";
 
 export class ProductNotFoundError extends Error {
   constructor(message = "Product not found.") {

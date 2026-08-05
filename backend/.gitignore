@@ -43,6 +43,8 @@ coverage/
 # Local databases
 *.sqlite
 *.sqlite3
+*.db
+*.db-journal
 
 # Misc
 *.tgz

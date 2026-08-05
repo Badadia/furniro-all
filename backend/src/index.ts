@@ -1,14 +1,22 @@
-import express, { Request, Response } from "express";
 import cors from "cors";
-import productsRouter from "./routes/productRouter";
+import express, { Request, Response } from "express";
+
 import errorHandler from "./middlewares/errorHandler";
 import { requestLogger } from "./middlewares/loggerMiddleware";
+import productsRouter from "./routes/productRouter";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use(requestLogger);
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL || "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    credentials: true,
+  }),
+);
 
 const PORT = process.env.PORT || 3000;
 

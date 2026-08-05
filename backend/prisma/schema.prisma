@@ -10,7 +10,7 @@ datasource db {
 model Product {
   id               String   @id @default(uuid())
   sku              String   @unique
-  name             String
+  name             String   @default("")
   slug             String
   category         String
   price            Float

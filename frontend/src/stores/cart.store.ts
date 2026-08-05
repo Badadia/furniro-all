@@ -1,3 +1,4 @@
+import { calculateDiscount } from "@/utils/price";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
@@ -31,11 +32,6 @@ interface CartState {
   getTotalItems: () => number;
   getSubtotal: () => number;
   getTotal: () => number;
-}
-
-function getUnitPrice(item: Pick<Product, "price" | "discount">): number {
-  const discountValue = item.price * (item.discount / 100);
-  return item.price - discountValue;
 }
 
 export const useCartStore = create<CartState>()(
@@ -127,7 +123,9 @@ export const useCartStore = create<CartState>()(
 
       getTotal: () => {
         return get().items.reduce(
-          (total, item) => total + getUnitPrice(item) * item.quantity,
+          (total, item) =>
+            total +
+            calculateDiscount(item.price, item.discount) * item.quantity,
           0,
         );
       },
