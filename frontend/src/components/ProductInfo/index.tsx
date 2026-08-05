@@ -1,12 +1,12 @@
-import { useProductVariant } from "../../features/single-product/hooks/useProductVariant";
 import type { Product } from "@/types/product";
 import { calculateDiscount, formatPrice } from "@/utils/price";
+import { useProductVariant } from "../../features/single-product/hooks/useProductVariant";
+import { QuantityInput } from "../Cart/QuantityInput";
 import AddToCartButton from "./AddToCartButton";
 import ProductColors from "./ProductColors";
 import ProductMeta from "./ProductMeta";
 import ProductPrice from "./ProductPrice";
 import ProductSizes from "./ProductSizes";
-import QuantitySelector from "./QuantitySelector";
 
 type ProductInfoProps = {
   product: Product;
@@ -16,11 +16,8 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
   const {
     selectedSize,
     selectedColor,
-    quantity,
     setSelectedSize,
     setSelectedColor,
-    incrementQuantity,
-    decrementQuantity,
     addToCart,
   } = useProductVariant(product);
 
@@ -36,22 +33,16 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
       {/* Preço */}
       <ProductPrice
         currentPrice={formatPrice(unitPrice)}
-        oldPrice={
-          product.discount > 0 ? formatPrice(product.price) : undefined
-        }
+        oldPrice={product.discount > 0 ? formatPrice(product.price) : undefined}
       />
 
       {/* Avaliação */}
       <div className="mt-4 flex items-center gap-4">
-        <div className="flex text-yellow-500">
-          ★ ★ ★ ★ ★
-        </div>
+        <div className="flex text-yellow-500">★ ★ ★ ★ ★</div>
 
         <span className="h-5 w-px bg-gray-300" />
 
-        <span className="text-sm text-gray-500">
-          5 Customer Review
-        </span>
+        <span className="text-sm text-gray-500">5 Customer Review</span>
       </div>
 
       {/* Descrição */}
@@ -75,11 +66,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
 
       {/* Quantidade + Botões */}
       <div className="mt-8 flex flex-wrap gap-4">
-        <QuantitySelector
-          quantity={quantity}
-          onDecrement={decrementQuantity}
-          onIncrement={incrementQuantity}
-        />
+        <QuantityInput id={product.id} item={product} />
 
         <AddToCartButton onClick={addToCart} />
       </div>
