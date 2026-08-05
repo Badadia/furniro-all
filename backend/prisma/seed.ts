@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 const cloudinaryBaseUrl =
-  "https://res.cloudinary.com/furniro-demo/image/upload/v1/products";
+  "https://res.cloudinary.com/furniro/image/upload";
 
 const initialProducts = [
   {
@@ -21,10 +21,7 @@ const initialProducts = [
       "General Dimensions: W: 250cm x D: 92cm x H: 80cm. Material: Solid Wood Frame, Premium Fabric Upholstery.",
     image: `${cloudinaryBaseUrl}/asgaard-sofa.png`,
     additionalImages: JSON.stringify([
-      `${cloudinaryBaseUrl}/asgaard-sofa-1.png`,
-      `${cloudinaryBaseUrl}/asgaard-sofa-2.png`,
-      `${cloudinaryBaseUrl}/asgaard-sofa-3.png`,
-      `${cloudinaryBaseUrl}/asgaard-sofa-4.png`,
+      `${cloudinaryBaseUrl}/asgaard-sofa-1.png`
     ]),
     colors: JSON.stringify(["#816DFA", "#000000", "#B88E2F"]),
     sizes: JSON.stringify(["L", "XL", "XS"]),
@@ -43,7 +40,9 @@ const initialProducts = [
     additionalInfo:
       "Weight capacity: 120kg. Material: Beech wood and Molded Polypropylene.",
     image: `${cloudinaryBaseUrl}/syltherine.png`,
-    additionalImages: JSON.stringify([`${cloudinaryBaseUrl}/syltherine.png`]),
+    additionalImages: JSON.stringify([
+      `${cloudinaryBaseUrl}/syltherine-1.png`
+    ]),
     colors: JSON.stringify(["#B88E2F", "#000000"]),
     sizes: JSON.stringify(["S", "M", "L"]),
     isNew: false,
@@ -60,7 +59,9 @@ const initialProducts = [
       "Minimalist and ergonomic cafe chair with sleek contours. Perfect for home dining areas and commercial spaces.",
     additionalInfo: "Dimensions: 45 x 45 x 85 cm. Minimal assembly required.",
     image: `${cloudinaryBaseUrl}/leviosa.png`,
-    additionalImages: JSON.stringify([`${cloudinaryBaseUrl}/leviosa.png`]),
+    additionalImages: JSON.stringify([
+      `${cloudinaryBaseUrl}/leviosa-1.png`
+    ]),
     colors: JSON.stringify(["#FFFFFF", "#000000"]),
     sizes: JSON.stringify(["M", "L"]),
     isNew: false,
@@ -77,7 +78,9 @@ const initialProducts = [
       "Expansive luxury sofa crafted for ultimate relaxation in spacious living rooms. Upholstered in soft, premium linen blend fabric with deep cushioning.",
     additionalInfo: "Seating capacity: 4-5 adults. High-density foam padding.",
     image: `${cloudinaryBaseUrl}/lolito.png`,
-    additionalImages: JSON.stringify([`${cloudinaryBaseUrl}/lolito.png`]),
+    additionalImages: JSON.stringify([
+      `${cloudinaryBaseUrl}/lolito-1.png`
+    ]),
     colors: JSON.stringify(["#B88E2F", "#816DFA"]),
     sizes: JSON.stringify(["XL", "XXL"]),
     isNew: false,
@@ -94,7 +97,9 @@ const initialProducts = [
       "Weather-resistant outdoor bar table set complete with matching stools. Ideal for balconies, patios, and gardens.",
     additionalInfo: "UV-resistant powder coating. Rust-proof aluminum frame.",
     image: `${cloudinaryBaseUrl}/respira.png`,
-    additionalImages: JSON.stringify([`${cloudinaryBaseUrl}/respira.png`]),
+    additionalImages: JSON.stringify([
+      `${cloudinaryBaseUrl}/respira-1.png`
+    ]),
     colors: JSON.stringify(["#000000", "#FFFFFF"]),
     sizes: JSON.stringify(["M"]),
     isNew: true,
@@ -111,7 +116,9 @@ const initialProducts = [
       "Warm ambient night lamp featuring an elegant wooden base and soft cotton lampshade for cozy bedtime reading.",
     additionalInfo: "Voltage: 220V. Bulb type: E27 LED (included).",
     image: `${cloudinaryBaseUrl}/grifo.png`,
-    additionalImages: JSON.stringify([`${cloudinaryBaseUrl}/grifo.png`]),
+    additionalImages: JSON.stringify([
+      `${cloudinaryBaseUrl}/grifo-1.png`
+    ]),
     colors: JSON.stringify(["#B88E2F"]),
     sizes: JSON.stringify(["Standard"]),
     isNew: false,
@@ -128,7 +135,9 @@ const initialProducts = [
       "Handmade ceramic mug with matte finish. Retains heat effectively for coffee and tea lovers.",
     additionalInfo: "Capacity: 350ml. Dishwasher and microwave safe.",
     image: `${cloudinaryBaseUrl}/muggo.png`,
-    additionalImages: JSON.stringify([`${cloudinaryBaseUrl}/muggo.png`]),
+    additionalImages: JSON.stringify([
+      `${cloudinaryBaseUrl}/muggo-1.png`
+    ]),
     colors: JSON.stringify(["#000000", "#FFFFFF", "#816DFA"]),
     sizes: JSON.stringify(["350ml"]),
     isNew: true,
@@ -146,7 +155,9 @@ const initialProducts = [
     additionalInfo:
       "Fits Standard Queen Mattress (160x200cm). Solid pine slats included.",
     image: `${cloudinaryBaseUrl}/pingky.png`,
-    additionalImages: JSON.stringify([`${cloudinaryBaseUrl}/pingky.png`]),
+    additionalImages: JSON.stringify([
+      `${cloudinaryBaseUrl}/pingky-1.png`
+    ]),
     colors: JSON.stringify(["#816DFA", "#B88E2F"]),
     sizes: JSON.stringify(["Queen", "King"]),
     isNew: false,
@@ -163,7 +174,9 @@ const initialProducts = [
       "Sleek terracotta ceramic flower pot designed for indoor succulents and houseplants.",
     additionalInfo: "Includes drainage hole and matching saucer dish.",
     image: `${cloudinaryBaseUrl}/potty.png`,
-    additionalImages: JSON.stringify([`${cloudinaryBaseUrl}/potty.png`]),
+    additionalImages: JSON.stringify([
+      `${cloudinaryBaseUrl}/potty-1.png`
+    ]),
     colors: JSON.stringify(["#B88E2F", "#FFFFFF"]),
     sizes: JSON.stringify(["S", "M"]),
     isNew: true,
