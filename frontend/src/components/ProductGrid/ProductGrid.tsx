@@ -1,4 +1,5 @@
 import type { Product } from "@/types/product";
+import { Link } from "react-router";
 import ProductGridCard from "./ProductGridCard";
 
 type ProductGridProps = {
@@ -24,6 +25,14 @@ const ProductGrid = ({ products, title }: ProductGridProps) => {
           />
         ))}
       </div>
+
+      {title && (
+        <Link to="/shop">
+          <button className="border border-over-secundary text-over-secundary font-bold py-3 px-19.5 transition cursor-pointer hover:bg-over-secundary hover:text-white">
+            Show More
+          </button>
+        </Link>
+      )}
     </section>
   );
 };

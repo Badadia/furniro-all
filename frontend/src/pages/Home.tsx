@@ -1,3 +1,4 @@
+import { useProducts } from "@/hooks/UseProducts";
 import RoomCarousel from "../components/Carousel/RoomCarousel";
 import CategoriesGrid from "../components/Categories/CategoriesGrid";
 import Container from "../components/Container";
@@ -6,14 +7,14 @@ import Mosaic from "../components/Mosaic/Mosaic";
 import ProductGrid from "../components/ProductGrid/ProductGrid";
 
 const Home = () => {
-  // TODO: pegar os produtos da API e passar para o ProductGrid
+  const { products } = useProducts({ limit: 12, offset: 0 });
 
   return (
     <div>
       <Hero />
       <Container>
         <CategoriesGrid />
-        <ProductGrid products={[]} title="Our Products" />
+        <ProductGrid products={products} title="Our Products" />
         <RoomCarousel />
         <Mosaic />
       </Container>

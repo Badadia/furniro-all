@@ -1,11 +1,12 @@
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react"
-import { Navigation, Pagination } from "swiper/modules"
-import { FiArrowRight, FiChevronRight } from "react-icons/fi"
-import { getImage } from "../../lib/assets"
+import { FiArrowRight, FiChevronRight } from "react-icons/fi";
+import { Navigation, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { getImage } from "../../lib/assets";
 
-import "swiper/css"
-import "swiper/css/navigation"
-import "swiper/css/pagination"
+import { Link } from "react-router";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const rooms = [
   {
@@ -32,10 +33,10 @@ const rooms = [
     category: "Work Space",
     image: "Carousel4.png",
   },
-]
+];
 
 const CarouselNextButton = () => {
-  const swiper = useSwiper()
+  const swiper = useSwiper();
   return (
     <button
       onClick={() => swiper.slideNext()}
@@ -44,8 +45,8 @@ const CarouselNextButton = () => {
     >
       <FiChevronRight size={24} />
     </button>
-  )
-}
+  );
+};
 
 export default function RoomCarousel() {
   return (
@@ -59,9 +60,11 @@ export default function RoomCarousel() {
             Our designer already made a lot of beautiful prototypes of rooms
             that inspire you
           </p>
-          <button className="bg-[#B88E2F] hover:bg-[#A07A25] text-white font-bold py-3 px-8 transition-colors cursor-pointer">
-            Explore More
-          </button>
+          <Link to="/shop">
+            <button className="bg-[#B88E2F] hover:bg-[#A07A25] text-white font-bold py-3 px-8 transition-colors cursor-pointer">
+              Explore More
+            </button>
+          </Link>
         </div>
 
         <div className="md:w-2/3 w-full relative">
@@ -178,5 +181,5 @@ export default function RoomCarousel() {
         }
       `}</style>
     </section>
-  )
+  );
 }
