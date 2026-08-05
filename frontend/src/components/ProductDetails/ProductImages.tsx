@@ -1,3 +1,5 @@
+import { getImage } from "../../lib/assets";
+
 type ProductImagesProps = {
   images: string[];
 };
@@ -13,7 +15,7 @@ const ProductImages = ({ images }: ProductImagesProps) => {
         {images.map((image, index) => (
           <img
             key={image}
-            src={image}
+            src={getImage(image)}
             alt={`Product ${index + 1}`}
             className="mx-auto h-[348px] w-full max-w-[605px] rounded-lg object-cover"
           />
