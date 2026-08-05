@@ -1,5 +1,5 @@
+import { formatPrice } from "@/utils/price";
 import { useCartStore } from "../../stores/cart.store";
-import { formatCurrency } from "../../utils/formats";
 import { CheckoutButton } from "./CheckoutButton";
 
 export function CartTotals() {
@@ -12,12 +12,12 @@ export function CartTotals() {
       <div className="flex flex-col gap-7.5 mt-15 mb-10.5">
         <div className="flex gap-14">
           Subtotal:{" "}
-          <span className="text-footer-gray">{formatCurrency(subtotal)}</span>
+          <span className="text-footer-gray">{formatPrice(subtotal)}</span>
         </div>
         <div className="flex gap-14 text-nowrap">
           Total:{" "}
           <span className="text-over-secundary font-medium text-xl">
-            {formatCurrency(total)}
+            {formatPrice(total)}
           </span>
         </div>
       </div>

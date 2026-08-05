@@ -1,7 +1,7 @@
+import { formatPrice } from "@/utils/price";
 import { Link } from "react-router";
 import { getImage } from "../../lib/assets";
 import { useCartStore, type CartItem } from "../../stores/cart.store";
-import { formatCurrency } from "../../utils/formats";
 import { QuantityInput } from "./QuantityInput";
 import { RemoveItem } from "./RemoveItem";
 
@@ -23,9 +23,9 @@ export function CartItem({ item }: CartItemProps) {
         />
       </Link>
       <span className="text-footer-gray">{name}</span>
-      <span className="text-footer-gray">{formatCurrency(price)}</span>
+      <span className="text-footer-gray">{formatPrice(price)}</span>
       <QuantityInput id={id} />
-      <span className="text-nowrap">{formatCurrency(itemSubtotal)}</span>
+      <span className="text-nowrap">{formatPrice(itemSubtotal)}</span>
       <RemoveItem id={id} />
     </div>
   );
