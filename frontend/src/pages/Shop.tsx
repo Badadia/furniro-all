@@ -39,18 +39,20 @@ const Shop = () => {
                 resultText={resultText}
             />
 
-          <div className="mt-20">
-            {loading ? (
-                <p className="text-center">
-                    Loading products...
-                </p>
-            ) : (
-                <ProductGrid
-                    products={products}
-                    title=""
-                />
-            )}
+            <div className="mt-20">
+                {loading ? (
+                    <p className="text-center">
+                        Loading products...
+                    </p>
+                ) : (
+                    <ProductGrid
+                        products={products}
+                        title=""
+                    />
+                )}
             </div>
+
+            <div className="mb-22">
 
             <Pagination
                 limit={limit}
@@ -58,8 +60,11 @@ const Shop = () => {
                 offset={offset}
                 onPageChange={setOffset}
             />
-            
-            <Benefits/>
+            </div>
+
+            <div className="">
+                <Benefits />
+            </div>
 
 
         </div>

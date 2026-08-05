@@ -1,5 +1,9 @@
+import toast from "react-hot-toast";
+import { useCartStore } from "../../stores/cart.store";
+
 type ProductGridCardProps = {
   id: string;
+  sku: string;
   image: string;
   name: string;
   description: string;
@@ -9,6 +13,8 @@ type ProductGridCardProps = {
 };
 
 const ProductGridCard = ({
+  id,
+  sku,
   image,
   name,
   description,
@@ -16,78 +22,96 @@ const ProductGridCard = ({
   discount,
   isNew,
 }: ProductGridCardProps) => {
+  const addItem = useCartStore((state) => state.addItem);
+
   const formattedPrice = new Intl.NumberFormat("pt-BR", {
     style: "currency",
     currency: "BRL",
   }).format(price / 100);
 
+  function handleAddToCart() {
+    addItem({
+      id,
+      sku,
+      name,
+      price,
+      discount,
+      image,
+    });
+
+    toast.success(`${name} adicionado ao carrinho!`);
+  }
+
   return (
     <article className="group relative min-w-71.25 overflow-hidden bg-card-product">
-      <div className="relative h-75.25 w-full">
-        <img
-          src={image}
-          alt={name}
-          className="h-full w-full object-cover"
-        />
-
+      <div
+        className="relative h-75.25 w-full bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${image})`,
+        }}
+      >
         {discount > 0 && (
-          <span className="absolute right-6 top-6 flex h-12 w-12 items-center justify-center rounded-full bg-[#E97171] font-poppins text-[16px] font-medium text-primary">
+          <span className="absolute right-6 top-6 flex h-12 w-12 items-center justify-center rounded-full bg-[#E97171] text-primary">
             -{discount}%
           </span>
         )}
 
         {isNew && (
-          <span className="absolute right-6 top-6 flex h-12 w-12 items-center justify-center rounded-full bg-[#2EC1AC] font-poppins text-[16px] font-medium text-primary">
+          <span className="absolute right-6 top-6 flex h-12 w-12 items-center justify-center rounded-full bg-[#2EC1AC] text-primary">
             New
           </span>
         )}
       </div>
 
       <div className="px-4 py-4">
-        <h3 className="font-poppins text-[24px] font-semibold text-primary-text-200">
+        <h3 className="font-poppins text-[24px] font-semibold">
           {name}
         </h3>
 
-        <p className="mt-2 font-poppins text-[16px] text-over-card-product">
+        <p className="mt-2">
           {description}
         </p>
 
-        <p className="mt-2 font-poppins font-semibold text-primary-text-200">
+        <p className="mt-2 font-semibold">
           {formattedPrice}
         </p>
       </div>
 
-      {/* Área de ações no hover */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 bg-black/60 opacity-0 transition duration-300 group-hover:opacity-100">
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 bg-black/70 opacity-0 transition duration-300 group-hover:opacity-100">
         <button
           type="button"
-          className="h-12 w-55.25 bg-primary font-poppins text-[16px] font-semibold text-over-secundary"
+          onClick={handleAddToCart}
+          className="z-10 h-12 w-55 cursor-pointer bg-white font-semibold"
         >
           Add to cart
         </button>
 
-        <div className="flex w-full justify-around px-4">
-          <button
-            type="button"
-            className="font-poppins text-sm font-semibold text-primary"
-          >
-            Share
-          </button>
+        <div className="z-10 flex w-full items-center justify-between px-4">
 
-          <button
-            type="button"
-            className="font-poppins text-sm font-semibold text-primary"
-          >
-            Compare
-          </button>
+  <button
+    type="button"
+    className="flex items-center gap-1 font-poppins text-[16px] font-semibold text-white transition hover:opacity-80"
+  >
+    <img src="/Icons/share.svg" alt="Share" />
+    Share
+  </button>
 
-          <button
-            type="button"
-            className="font-poppins text-sm font-semibold text-primary"
-          >
-            Like
-          </button>
-        </div>
+  <button
+    type="button"
+    className="flex items-center gap-1 font-poppins text-[16px] font-semibold text-white transition hover:opacity-80"
+  >
+    <img src="/Icons/compare.svg" alt="Compare" />
+    Compare
+  </button>
+
+  <button
+    type="button"
+    className="flex items-center gap-1 font-poppins text-[16px] font-semibold text-white transition hover:opacity-80"
+  >
+    <img src="/Icons/like.svg " alt="Like" />
+    Like
+  </button>
+</div>
       </div>
     </article>
   );

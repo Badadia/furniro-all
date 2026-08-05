@@ -3,6 +3,7 @@ import axios from "axios";
 
 type Product = {
   id: string;
+  sku: string;
   image: string;
   name: string;
   description: string;
