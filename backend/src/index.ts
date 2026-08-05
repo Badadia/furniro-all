@@ -1,9 +1,12 @@
 import express, { Request, Response } from "express";
+import cors from "cors";
 import productsRouter from "./routes/productRouter";
 import errorHandler from "./middlewares/errorHandler";
 import { requestLogger } from "./middlewares/loggerMiddleware";
 
 const app = express();
+
+app.use(cors());
 app.use(express.json());
 app.use(requestLogger);
 
