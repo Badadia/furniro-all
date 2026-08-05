@@ -1,4 +1,5 @@
 import toast from "react-hot-toast";
+import { Link } from "react-router";
 import share from "/Icons/share.svg";
 import compare from "/Icons/compare.svg";
 import like from "/Icons/like.svg";
@@ -12,6 +13,7 @@ type ProductGridCardProps = {
   oldPrice?: string;
   discount?: number;
   isNew: boolean;
+  href?: string;
 };
 
 const ProductGridCard = ({
@@ -23,17 +25,28 @@ const ProductGridCard = ({
   oldPrice,
   discount,
   isNew,
+  href,
 }: ProductGridCardProps) => {
   const badgeClass =
     "absolute right-6 top-6 flex h-12 w-12 items-center justify-center rounded-full font-poppins text-[16px] font-medium leading-6 text-primary";
 
-  const handleAddToCart = () => {
+  const handleOverlayAction = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (href) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  };
+
+  const handleAddToCart = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (href) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
     toast.success(`${name} added to cart!`);
   };
 
-
-  return (
-    <article className="group relative min-w-71.25 overflow-hidden bg-card-product">
+  const card = (
+    <>
       <div
         className="relative h-75.25 w-full bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${image})` }}
@@ -77,22 +90,40 @@ const ProductGridCard = ({
         </button>
 
         <div className="z-10 flex w-full items-center justify-between px-4">
-          <button type="button" className="flex gap-px font-poppins text-[16px] font-semibold text-primary transition hover:opacity-80">
+          <button
+            type="button"
+            onClick={handleOverlayAction}
+            className="flex gap-px font-poppins text-[16px] font-semibold text-primary transition hover:opacity-80"
+          >
             <img src={share} alt="" />
             Share
           </button>
 
-          <button type="button" className="flex gap-px font-poppins text-[16px] font-semibold text-primary transition hover:opacity-80">
+          <button
+            type="button"
+            onClick={handleOverlayAction}
+            className="flex gap-px font-poppins text-[16px] font-semibold text-primary transition hover:opacity-80"
+          >
             <img src={compare} alt="" />
             Compare
           </button>
 
-          <button type="button" className="flex gap-px font-poppins text-[16px] font-semibold text-primary transition hover:opacity-80">
+          <button
+            type="button"
+            onClick={handleOverlayAction}
+            className="flex gap-px font-poppins text-[16px] font-semibold text-primary transition hover:opacity-80"
+          >
             <img src={like} alt="" />
             Like
           </button>
         </div>
       </div>
+    </>
+  );
+
+  return (
+    <article className="group relative min-w-71.25 overflow-hidden bg-card-product">
+      {href ? <Link to={href}>{card}</Link> : card}
     </article>
   );
 };
