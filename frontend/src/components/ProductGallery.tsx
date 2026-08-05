@@ -1,4 +1,5 @@
 import { useGallery } from "../features/single-product/hooks/useGallery";
+import { getImage } from "../lib/assets";
 
 type ProductGalleryProps = {
   images: string[];
@@ -26,7 +27,7 @@ const ProductGallery = ({ images }: ProductGalleryProps) => {
             }`}
           >
             <img
-              src={image}
+              src={getImage(image)}
               alt={`Product ${index + 1}`}
               className="h-full w-full rounded-lg object-cover"
             />
@@ -37,7 +38,7 @@ const ProductGallery = ({ images }: ProductGalleryProps) => {
       {/* Imagem principal */}
       <div className="flex aspect-square w-full max-w-[500px] items-center justify-center rounded-lg bg-[#F9F1E7] sm:aspect-auto sm:h-[500px] sm:w-[500px]">
         <img
-          src={selectedImage}
+          src={getImage(selectedImage)}
           alt="Product"
           className="h-full w-full rounded-lg object-cover"
         />

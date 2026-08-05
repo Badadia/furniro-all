@@ -1,3 +1,5 @@
+import { getImage } from "../../lib/assets";
+
 type Room = {
   image: string;
   type: string;
@@ -42,7 +44,7 @@ const Carousel = ({
           {nextRooms.map((room) => (
             <div key={room.image} className="h-121.5 min-w-93 overflow-hidden">
               <img
-                src={room.image}
+                src={getImage(room.image)}
                 alt={room.title}
                 className="h-full w-full object-cover transition duration-300 hover:scale-110"
               />

@@ -1,14 +1,14 @@
 import { Link } from "react-router";
 
 type CategoryCardProps = {
-  src: string;
+  image: string;
   alt: string;
   title: string;
   to: string;
 };
 
 export default function CategoryCard({
-  src,
+  image,
   alt,
   title,
   to,
@@ -18,7 +18,7 @@ export default function CategoryCard({
       <div className="max-w-95.25 text-center transition hover:-translate-y-3">
         <img
           className="h-100 rounded-lg object-cover sm:h-120"
-          src={src}
+          src={image}
           alt={alt}
         />
         <h2 className="text-primary-text mt-7.5 text-xl font-semibold sm:text-2xl">
