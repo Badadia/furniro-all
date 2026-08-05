@@ -1,15 +1,5 @@
+import type { Product } from "@/types/product";
 import ProductGridCard from "./ProductGridCard";
-
-type Product = {
-  id: string;
-  sku: string;
-  image: string;
-  name: string;
-  description: string;
-  price: number;
-  discount: number;
-  isNew: boolean;
-};
 
 type ProductGridProps = {
   products: Product[];
@@ -26,17 +16,11 @@ const ProductGrid = ({ products, title }: ProductGridProps) => {
       )}
 
       <div className="mb-8 grid w-full max-w-309 grid-cols-1 justify-items-center gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-
         {products.map((product) => (
           <ProductGridCard
             key={product.id}
-            image={product.image}
-            name={product.name}
-            description={product.description}
-            currentPrice={`R$ ${product.price.toFixed(2)}`}
-            offer={product.discount > 0}
-            discount={product.discount}
-            isNew={product.isNew}
+            href={`/product/${product.id}`}
+            product={product}
           />
         ))}
       </div>

@@ -1,16 +1,6 @@
-import { useEffect, useState } from "react";
+import type { Product } from "@/types/product";
 import axios from "axios";
-
-type Product = {
-  id: string;
-  sku: string;
-  image: string;
-  name: string;
-  description: string;
-  price: number;
-  discount: number;
-  isNew: boolean;
-};
+import { useEffect, useState } from "react";
 
 type UseProductsProps = {
   category?: string;
@@ -55,12 +45,9 @@ export const useProducts = ({
           params._order = "desc";
         }
 
-        const response = await axios.get(
-          "http://localhost:3000/products",
-          {
-            params,
-          },
-        );
+        const response = await axios.get("http://localhost:3000/products", {
+          params,
+        });
 
         setProducts(response.data.data);
         setTotal(response.data.total);

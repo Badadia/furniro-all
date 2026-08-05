@@ -8,10 +8,9 @@ const initialProducts = [
     name: "Asgaard Sofa",
     slug: "asgaard-sofa",
     category: "Living",
-    price: 2500000.0,
+    price: 250000.0,
     discount: 0,
-    description:
-      "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio.",
+    description: "Luxury big sofa",
     fullDescription:
       "Embodying the raw, wayward spirit of rock 'n' roll, the Kilburn portable active stereo speaker takes the unmistakable look and sound of Marshall, unplugs the chords, and takes the show on the road. Weighing in under 7 pounds, the Kilburn is a lightweight piece of vintage styled engineering.",
     additionalInfo:
@@ -32,7 +31,7 @@ const initialProducts = [
     name: "Syltherine",
     slug: "syltherine",
     category: "Dining",
-    price: 3500000.0,
+    price: 350000.0,
     discount: 30,
     description: "Stylish cafe chair",
     fullDescription:
@@ -50,7 +49,7 @@ const initialProducts = [
     name: "Leviosa",
     slug: "leviosa",
     category: "Dining",
-    price: 2500000.0,
+    price: 250000.0,
     discount: 0,
     description: "Stylish cafe chair",
     fullDescription:
@@ -67,7 +66,7 @@ const initialProducts = [
     name: "Lolito",
     slug: "lolito",
     category: "Living",
-    price: 14000000.0,
+    price: 140000.0,
     discount: 50,
     description: "Luxury big sofa",
     fullDescription:
@@ -101,7 +100,7 @@ const initialProducts = [
     name: "Grifo",
     slug: "grifo",
     category: "Bedroom",
-    price: 1500000.0,
+    price: 150000.0,
     discount: 0,
     description: "Night lamp",
     fullDescription:
@@ -118,7 +117,7 @@ const initialProducts = [
     name: "Muggo",
     slug: "muggo",
     category: "Dining",
-    price: 150000.0,
+    price: 15000.0,
     discount: 0,
     description: "Small mug",
     fullDescription:
@@ -135,7 +134,7 @@ const initialProducts = [
     name: "Pingky",
     slug: "pingky",
     category: "Bedroom",
-    price: 14000000.0,
+    price: 140000.0,
     discount: 50,
     description: "Cute bed set",
     fullDescription:
@@ -153,7 +152,7 @@ const initialProducts = [
     name: "Potty",
     slug: "potty",
     category: "Bedroom",
-    price: 500000.0,
+    price: 5000.0,
     discount: 0,
     description: "Minimalist flower pot",
     fullDescription:
@@ -172,7 +171,7 @@ const generatedProducts = Array.from({ length: 23 }).map((_, index) => {
   const base = initialProducts[index % initialProducts.length];
   const itemNum = index + 10;
   const category = categories[index % categories.length];
-  const price = base.price + index * 100000;
+  const price = base.price + index * 10000;
   return {
     sku: `SS${String(itemNum).padStart(3, "0")}`,
     name: `${base.name} Vol.${itemNum}`,
@@ -187,7 +186,7 @@ const generatedProducts = Array.from({ length: 23 }).map((_, index) => {
     additionalImages: base.additionalImages,
     colors: base.colors,
     sizes: base.sizes,
-    isNew: index % 3 === 0,
+    isNew: index % 3 === 0 && !base.discount,
   };
 });
 
