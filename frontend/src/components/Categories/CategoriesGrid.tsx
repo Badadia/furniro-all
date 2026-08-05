@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { getImage } from "../../lib/assets";
 import CategoryCard from "./CategoryCard";
 
 export default function CategoriesGrid() {
@@ -21,19 +22,19 @@ export default function CategoriesGrid() {
 
       <div className="mt-15.5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         <CategoryCard
-          src="/Categories/Category1.png"
+          image={getImage("Category1.png")}
           alt="Imagem de interior de sala de jantar"
           title="Dining"
           to="/shop/dining"
         />
         <CategoryCard
-          src="/Categories/Category2.png"
+          image={getImage("Category2.png")}
           alt="Imagem de interior de sala de estar"
           title="Living"
           to="/shop/living"
         />
         <CategoryCard
-          src="/Categories/Category3.png"
+          image={getImage("Category3.png")}
           alt="Imagem de interior de quarto"
           title="Bedroom"
           to="/shop/bedroom"

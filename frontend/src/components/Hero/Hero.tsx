@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { Link } from "react-router";
+import { getImage } from "../../lib/assets";
 import HeroButton from "./HeroButton";
 
 const Hero = () => {
@@ -7,7 +8,7 @@ const Hero = () => {
     <section className="relative mx-auto mb-64 sm:mb-20 lg:mb-0">
       <img
         className="max-h-60 w-screen object-cover sm:max-h-70 md:max-h-100 lg:max-h-150 xl:max-h-179"
-        src="/Images/Hero.jpg"
+        src={getImage("Hero.jpg")}
         alt="Imagem de interior de sala"
       />
       <div
