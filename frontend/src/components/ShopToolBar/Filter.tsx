@@ -9,7 +9,6 @@ interface FilterProps {
 function Filter({ category, onChange }: FilterProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Atualiza a categoria selecionada e fecha o menu.
   function handleSelect(value: string) {
     onChange(value);
     setIsOpen(false);

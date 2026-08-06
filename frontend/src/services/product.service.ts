@@ -148,9 +148,7 @@ async function fetchProduct(
         ) {
           message = (body as { error: string }).error;
         }
-      } catch {
-        // fallback para a mensagem padrão
-      }
+      } catch {}
 
       throw new ProductApiError(message);
     }
