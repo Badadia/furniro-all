@@ -89,6 +89,12 @@ O mock local de produtos (JSON Server) roda em:
 http://localhost:3001
 ```
 
+### Como rodar os testes e observar a cobertura 
+
+```bash
+npm run test:coverage 
+```
+
 ### Principais rotas
 
 - `/` — Home
