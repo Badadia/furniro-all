@@ -1,8 +1,8 @@
 # Frontend do Desafio 2 / Frontend of Challenge 2
 
-Aplicação React + TypeScript criada com Vite para um e-commerce de móveis. Este é o Desafio 2 da Fase 2 do AWS FDE Node.js + React da Compass UOL AI/R. O frontend consome produtos via API e também suporta um mock local com JSON Server.
+Aplicação React + TypeScript criada com Vite para um e-commerce de móveis. Este é o Desafio 2 da Fase 2 do AWS FDE Node.js + React da Compass UOL AI/R. O frontend consome produtos via API.
 
-This is Challenge 2 of Phase 2 of the AWS FDE Node.js + React program from Compass UOL AI/R. The frontend consumes product data from an API and also supports a local mock with JSON Server.
+This is Challenge 2 of Phase 2 of the AWS FDE Node.js + React program from Compass UOL AI/R. The frontend consumes product data from an API.
 
 ---
 
@@ -64,19 +64,11 @@ cp .env.example .env
 Main variables:
 
 - `VITE_API_URL`: backend API URL
-- `VITE_MOCK_API_URL`: local JSON Server URL
-- `VITE_USE_MOCK`: `true` to use mock data, `false` to use real backend
 - `VITE_CLOUDINARY_BASE_URL`: public image base URL
 
 3. Run locally:
 
-Start the mock API server (optional):
-
-```bash
-npm run server
-```
-
-In another terminal, start Vite:
+In terminal, start Vite:
 
 ```bash
 npm run dev
@@ -88,16 +80,9 @@ Open:
 http://localhost:5173
 ```
 
-Mock API:
-
-```txt
-http://localhost:3001
-```
-
 ### Scripts
 
 - `npm run dev` - start Vite development server
-- `npm run server` - start JSON Server mock API
 - `npm run build` - build production assets
 - `npm run lint` - run ESLint
 - `npm run preview` - preview the production build
@@ -210,19 +195,11 @@ cp .env.example .env
 Variáveis principais:
 
 - `VITE_API_URL`: URL da API backend
-- `VITE_MOCK_API_URL`: URL do JSON Server local
-- `VITE_USE_MOCK`: `true` para usar mock; `false` para usar backend real
 - `VITE_CLOUDINARY_BASE_URL`: base pública das imagens
 
 3. Executar localmente:
 
-Inicie o mock de API (opcional):
-
-```bash
-npm run server
-```
-
-Em outro terminal, inicie a aplicação:
+No terminal, inicie a aplicação:
 
 ```bash
 npm run dev
@@ -234,16 +211,9 @@ Acesse:
 http://localhost:5173
 ```
 
-Mock API:
-
-```txt
-http://localhost:3001
-```
-
 ### Scripts
 
 - `npm run dev` - inicia o servidor Vite
-- `npm run server` - inicia o JSON Server de mock
 - `npm run build` - compila para produção
 - `npm run lint` - executa ESLint
 - `npm run preview` - pré-visualiza o build
@@ -271,7 +241,7 @@ http://localhost:3001
 #### Consumo de API
 
 - `src/services/product.service.ts` - busca produtos e produto único com tratamento de erros e validação Zod
-- `src/config/env.ts` - define URLs e modo de mock via `import.meta.env`
+- `src/config/env.ts` - define URLs via `import.meta.env`
 
 ### Estrutura
 

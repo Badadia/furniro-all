@@ -3,7 +3,7 @@
 Este repositório contém o desafio 2 da Fase 2 do programa AWS FDE Node.js + React da Compass UOL AI/R. O projeto inclui duas partes principais:
 
 - `backend/` — API RESTful em Node.js, Express, TypeScript e Prisma
-- `frontend/` — aplicação React + TypeScript com Vite, Tailwind e mock JSON Server
+- `frontend/` — aplicação React + TypeScript com Vite, Tailwind
 
 ---
 
@@ -33,7 +33,7 @@ Este repositório contém o desafio 2 da Fase 2 do programa AWS FDE Node.js + Re
 
 ## Visão geral
 
-O desafio consiste em uma API backend e um frontend conectado, construídos para um e-commerce de móveis. O backend usa SQLite via Prisma, e o frontend consome dados pela API ou por um mock local.
+O desafio consiste em uma API backend e um frontend conectado, construídos para um e-commerce de móveis. O backend usa SQLite via Prisma, e o frontend consome dados pela API.
 
 ## Backend
 
@@ -73,7 +73,6 @@ O endpoint `GET /products` suporta filtros e paginação por meio de query param
 cd frontend
 npm install
 cp .env.example .env
-npm run server
 npm run dev
 ```
 
@@ -83,11 +82,6 @@ A aplicação ficará disponível em:
 http://localhost:5173
 ```
 
-O mock local de produtos (JSON Server) roda em:
-
-```txt
-http://localhost:3001
-```
 
 ### Como rodar os testes e observar a cobertura 
 
@@ -144,7 +138,7 @@ Principais pastas:
 
 ## Overview
 
-This challenge consists of a backend API and a connected frontend built for a furniture e-commerce. The backend uses SQLite via Prisma, and the frontend consumes data either from the API or from a local mock server.
+This challenge consists of a backend API and a connected frontend built for a furniture e-commerce. The backend uses SQLite via Prisma, and the frontend consumes data either from the API.
 
 ## Backend
 
@@ -184,7 +178,6 @@ The `GET /products` endpoint supports filtering and pagination through query par
 cd frontend
 npm install
 cp .env.example .env
-npm run server
 npm run dev
 ```
 
@@ -194,11 +187,7 @@ The application will be available at:
 http://localhost:5173
 ```
 
-The local product mock (JSON Server) runs at:
 
-```txt
-http://localhost:3001
-```
 
 ### How to run Tests and see coverage
 
