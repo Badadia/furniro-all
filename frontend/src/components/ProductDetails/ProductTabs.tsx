@@ -41,7 +41,7 @@ const ProductTabs = ({ tabs, activeId, onSelect }: ProductTabsProps) => {
     <div
       role="tablist"
       onKeyDown={handleKeyDown}
-      className="flex flex-wrap justify-center gap-6 sm:gap-16"
+      className="flex flex-wrap justify-center gap-6 sm:gap-16 pt-[49px]"
     >
       {tabs.map((tab) => {
         const isActive = tab.id === activeId;
@@ -64,7 +64,7 @@ const ProductTabs = ({ tabs, activeId, onSelect }: ProductTabsProps) => {
             tabIndex={isActive ? 0 : -1}
             onClick={() => onSelect(tab.id)}
             onFocus={() => onSelect(tab.id)}
-            className={`border-b-2 pb-2 font-poppins text-[24px] transition focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-text-200 ${
+            className={`pb-2 font-poppins text-[24px] transition focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary-text-200 ${
               isActive
                 ? "border-primary-text-200 text-primary-text-200"
                 : "border-transparent text-[#9F9F9F]"
