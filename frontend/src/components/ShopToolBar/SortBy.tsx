@@ -1,35 +1,12 @@
+import { SORT_OPTIONS } from "@/constants/shop";
+
 interface SortByProps {
   sort: string;
   onSortChange: (sort: string) => void;
 }
 
-// Opções de ordenação.
-// Os valores podem ser ajustados conforme a API.
-const sortOptions = [
-  {
-    label: "Default",
-    value: "default",
-  },
-  {
-    label: "Price: Low to High",
-    value: "price_asc",
-  },
-  {
-    label: "Price: High to Low",
-    value: "price_desc",
-  },
-];
-
-
-function SortBy({
-  sort,
-  onSortChange,
-
-}: SortByProps) {
-
-
+function SortBy({ sort, onSortChange }: SortByProps) {
   return (
-
     <div
       className="
         flex
@@ -38,7 +15,6 @@ function SortBy({
         sm:gap-4
       "
     >
-
       <span
         className="
           font-poppins
@@ -49,17 +25,9 @@ function SortBy({
         Sort by
       </span>
 
-
-
       <select
-
         value={sort}
-
-// Atualiza a opção de ordenação selecionada.
-        onChange={(event)=>
-          onSortChange(event.target.value)
-        }
-
+        onChange={(event) => onSortChange(event.target.value)}
         className={`
           h-[55px]
           w-[150px]
@@ -73,34 +41,17 @@ function SortBy({
           sm:text-[16px]
           outline-none
 
-          ${
-            sort === "default"
-              ? "text-[#9F9F9F]"
-              : "text-black"
-          }
+          ${sort === "default" ? "text-[#9F9F9F]" : "text-black"}
         `}
       >
-
-        {sortOptions.map((option)=>(
-
-          <option
-            key={option.value}
-            value={option.value}
-          >
+        {SORT_OPTIONS.map((option) => (
+          <option key={option.value} value={option.value}>
             {option.label}
           </option>
-
         ))}
-
-
       </select>
-
-
     </div>
-
   );
-
 }
-
 
 export default SortBy;

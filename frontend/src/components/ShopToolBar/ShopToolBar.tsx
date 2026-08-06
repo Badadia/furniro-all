@@ -3,9 +3,6 @@ import ShowProduct from "./ShowProduct";
 import SortBy from "./SortBy";
 
 interface ShopToolbarProps {
-
-  // Estados controlados pela página Shop.
-  // A toolbar apenas exibe e atualiza os valores.
   category: string;
   onCategoryChange: (category: string) => void;
 
@@ -15,8 +12,6 @@ interface ShopToolbarProps {
   limit: number;
   onLimitChange: (limit: number) => void;
 
-  
-  // Texto exibido com a quantidade de resultados.
   resultText: string;
 }
 
@@ -51,11 +46,7 @@ function ShopToolBar({
             gap-4
           "
         >
-          
-          <Filter
-            category={category}
-            onChange={onCategoryChange}
-          />
+          <Filter category={category} onChange={onCategoryChange} />
 
           <div
             className="
@@ -64,17 +55,11 @@ function ShopToolBar({
             "
           >
             <button type="button">
-              <img
-                src="/IconsShopTool/grid.svg"
-                alt="Grid"
-              />
+              <img src="/IconsShopTool/grid.svg" alt="Grid" />
             </button>
 
             <button type="button">
-              <img
-                src="/IconsShopTool/list.svg"
-                alt="List"
-              />
+              <img src="/IconsShopTool/list.svg" alt="List" />
             </button>
           </div>
 
@@ -107,16 +92,8 @@ function ShopToolBar({
             sm:mr-0 sm:gap-6
           "
         >
-          
-          <ShowProduct
-            limit={limit}
-            onLimitChange={onLimitChange}
-          />
-
-          <SortBy
-            sort={sort}
-            onSortChange={onSortChange}
-          />
+          <ShowProduct limit={limit} onLimitChange={onLimitChange} />
+          <SortBy sort={sort} onSortChange={onSortChange} />
         </div>
       </div>
     </section>
