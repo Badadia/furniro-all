@@ -32,19 +32,29 @@ export default class ProductController implements Controller<Product> {
   async getAll(req: Request, res: Response) {
     const pageValue = this.getQueryValue(req.query._page ?? req.query.page);
     const limitValue = this.getQueryValue(req.query._limit ?? req.query.limit);
-    const sortValue = this.getQueryValue(req.query._sort ?? req.query.sortBy);
+    const sortValue = this.getQueryValue(
+      req.query._sort ?? req.query.sortBy ?? req.query.sort,
+    );
     const orderValue = this.getQueryValue(req.query._order ?? req.query.order);
+
+    let sortBy: "price_asc" | "price_desc" | undefined;
+    if (
+      sortValue === "price_asc" ||
+      (sortValue === "price" && orderValue === "asc")
+    ) {
+      sortBy = "price_asc";
+    } else if (
+      sortValue === "price_desc" ||
+      (sortValue === "price" && orderValue === "desc")
+    ) {
+      sortBy = "price_desc";
+    }
 
     const query: ProductQueryParams = {
       category: this.getQueryValue(req.query.category),
       page: pageValue ? Number(pageValue) : undefined,
       limit: limitValue ? Number(limitValue) : undefined,
-      sortBy:
-        sortValue === "price" && orderValue === "desc"
-          ? "price_desc"
-          : sortValue === "price" && orderValue === "asc"
-            ? "price_asc"
-            : undefined,
+      sortBy,
     };
 
     const result = await this.productService.getAll(query);
