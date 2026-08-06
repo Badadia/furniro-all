@@ -17,7 +17,7 @@ const Header = () => {
       <div
         className={clsx(
           "flex justify-between items-center",
-          "w-full max-w-360 px-2 max-h-10.25",
+          "w-full max-w-[1280px] px-2",
           "md:px-4",
           "lg:px-12.5",
         )}
