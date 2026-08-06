@@ -13,6 +13,7 @@ interface ShopToolbarProps {
   onLimitChange: (limit: number) => void;
 
   resultText: string;
+  disabled: boolean;
 }
 
 function ShopToolBar({
@@ -23,6 +24,7 @@ function ShopToolBar({
   limit,
   onLimitChange,
   resultText,
+  disabled,
 }: ShopToolbarProps) {
   return (
     <section
@@ -46,7 +48,11 @@ function ShopToolBar({
             gap-4
           "
         >
-          <Filter category={category} onChange={onCategoryChange} />
+          <Filter
+            disabled={disabled}
+            category={category}
+            onChange={onCategoryChange}
+          />
 
           <div
             className="
@@ -92,8 +98,12 @@ function ShopToolBar({
             sm:mr-0 sm:gap-6
           "
         >
-          <ShowProduct limit={limit} onLimitChange={onLimitChange} />
-          <SortBy sort={sort} onSortChange={onSortChange} />
+          <ShowProduct
+            disabled={disabled}
+            limit={limit}
+            onLimitChange={onLimitChange}
+          />
+          <SortBy disabled={disabled} sort={sort} onSortChange={onSortChange} />
         </div>
       </div>
     </section>

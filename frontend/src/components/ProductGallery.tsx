@@ -19,7 +19,7 @@ const ProductGallery = ({ images }: ProductGalleryProps) => {
           <button
             key={image}
             onClick={() => setSelectedImage(image)}
-            className={`flex h-[80px] w-[80px] items-center justify-center rounded-lg bg-[#F9F1E7] ${
+            className={`flex h-20 w-20 items-center justify-center rounded-lg bg-[#F9F1E7] ${
               selectedImage === image ? "ring-2 ring-primary-text-200" : ""
             }`}
           >
@@ -32,7 +32,7 @@ const ProductGallery = ({ images }: ProductGalleryProps) => {
         ))}
       </div>
 
-      <div className="flex aspect-square w-full max-w-[500px] items-center justify-center rounded-lg bg-[#F9F1E7] sm:aspect-auto sm:h-[500px] sm:w-[500px]">
+      <div className="flex aspect-square w-full max-w-125 items-center justify-center rounded-lg bg-[#F9F1E7] sm:aspect-auto sm:h-125 sm:w-125">
         <img
           src={getImage(selectedImage)}
           alt="Product"
