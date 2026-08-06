@@ -1,28 +1,12 @@
 import { API_BASE_URL, MOCK_BASE_URL, USE_MOCK } from "@/config/env";
+import {
+  ProductApiError,
+  ProductContractError,
+  ProductNotFoundError,
+} from "@/errors/product";
 import { api } from "@/lib/axios";
 import type { Product, ProductsAPIResponse } from "@/types/product";
 import { z } from "zod";
-
-export class ProductNotFoundError extends Error {
-  constructor(message = "Product not found.") {
-    super(message);
-    this.name = "ProductNotFoundError";
-  }
-}
-
-export class ProductApiError extends Error {
-  constructor(message = "Something went wrong. Please try again.") {
-    super(message);
-    this.name = "ProductApiError";
-  }
-}
-
-export class ProductContractError extends Error {
-  constructor(details: string) {
-    super(`API response does not match the expected contract.\n${details}`);
-    this.name = "ProductContractError";
-  }
-}
 
 function parseStringArray(value: unknown): string[] {
   if (Array.isArray(value)) {
@@ -119,6 +103,7 @@ async function fetchProduct(
       if (response.status === 404) {
         throw new ProductNotFoundError();
       }
+
       throw new ProductApiError(
         `Failed to fetch product (HTTP ${response.status}).`,
       );
@@ -138,8 +123,10 @@ async function fetchProduct(
       }
 
       let message = `Failed to fetch product (HTTP ${response.status}).`;
+
       try {
         const body: unknown = await response.json();
+
         if (
           body !== null &&
           typeof body === "object" &&
