@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { getImage } from "../../lib/assets";
+import { Link } from "react-router";
 
 type PageBannerProps = {
   image?: string;
@@ -29,9 +30,16 @@ const PageBanner = ({
           {title}
         </h1>
 
-        <div className="mt-2 flex items-center gap-2 text-sm text-primary-text-200/70 sm:text-base">
-          <span className="font-medium">{breadcrumbHome}</span>
-          <span className="font-medium text-primary-text-200/40">&gt;</span>
+        <div className="mt-2 flex items-center font-poppins gap-2 text-sm text-primary-text-200/70 sm:text-base">
+          <Link to="/" className={"font-medium hover:text-gray-600 transition"}>
+            {breadcrumbHome}
+          </Link>
+          <span>
+            <img
+              src={`/Icons/breadcrumbarrow.svg`}
+              alt="Arrow Pointing Right"
+            />
+          </span>
           <span className="font-light text-primary-text-200">
             {breadcrumbCurrent}
           </span>

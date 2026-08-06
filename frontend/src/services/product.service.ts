@@ -136,7 +136,7 @@ async function fetchProduct(
           message = (body as { error: string }).error;
         }
       } catch {
-        // Keeps the default message when the response does not contain valid JSON
+        // não é JSON válido — cai no fallback de array vazio
       }
 
       throw new ProductApiError(message);

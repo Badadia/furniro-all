@@ -12,10 +12,11 @@ const ProductDetails = ({ tabs, images }: ProductDetailsProps) => {
   }
 
   return (
-    <section className="w-full">
+    <section className="w-full border-t border-gray-400">
+
       <ProductTabs tabs={tabs} activeId={activeId} onSelect={setActiveId} />
 
-      <div className="mt-10 border-t border-[#D9D9D9]">
+      <div className="mt-10">
         <ProductContent tabs={tabs} activeId={activeId} />
       </div>
 

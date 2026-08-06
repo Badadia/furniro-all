@@ -61,7 +61,7 @@ export default function RoomCarousel() {
             that inspire you
           </p>
           <Link to="/shop">
-            <button className="bg-[#B88E2F] hover:bg-[#A07A25] text-white font-bold py-3 px-8 transition-colors cursor-pointer">
+            <button className="bg-[#B88E2F]  hover:bg-secundary hover:text-over-secundary border-2 border-over-secundary text-white font-bold py-3 px-8 transition-colors cursor-pointer">
               Explore More
             </button>
           </Link>

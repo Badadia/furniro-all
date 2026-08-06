@@ -10,7 +10,7 @@ const ProductImages = ({ images }: ProductImagesProps) => {
   }
 
   return (
-    <div className="mt-10 border-t border-[#D9D9D9]">
+    <div className="mt-10">
       <div className="grid grid-cols-1 gap-8 pt-10 md:grid-cols-2">
         {images.map((image, index) => (
           <img

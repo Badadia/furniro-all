@@ -22,6 +22,8 @@ function Filter({ category, onChange }: FilterProps) {
         className="
           flex items-center gap-3
           cursor-pointer
+          hover:text-gray-600
+          transition
         "
       >
         <img src="/IconsShopTool/filter.svg" alt="Filter" />
