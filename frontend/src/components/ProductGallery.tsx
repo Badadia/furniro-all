@@ -14,7 +14,6 @@ const ProductGallery = ({ images }: ProductGalleryProps) => {
 
   return (
     <div className="flex w-full flex-col-reverse items-center gap-6 sm:w-auto sm:flex-row sm:items-start sm:gap-8">
-      {/* Miniaturas */}
       <div className="flex flex-row flex-wrap justify-center gap-4 sm:flex-col sm:flex-nowrap sm:justify-start sm:gap-8">
         {images.map((image, index) => (
           <button
@@ -33,7 +32,6 @@ const ProductGallery = ({ images }: ProductGalleryProps) => {
         ))}
       </div>
 
-      {/* Imagem principal */}
       <div className="flex aspect-square w-full max-w-[500px] items-center justify-center rounded-lg bg-[#F9F1E7] sm:aspect-auto sm:h-[500px] sm:w-[500px]">
         <img
           src={getImage(selectedImage)}
