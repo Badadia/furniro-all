@@ -7,7 +7,7 @@ import Mosaic from "../components/Mosaic/Mosaic";
 import ProductGrid from "../components/ProductGrid/ProductGrid";
 
 export const Home = () => {
-  const { products } = useProducts({ limit: 12, offset: 0 });
+  const { products } = useProducts({});
 
   return (
     <div>

@@ -9,7 +9,6 @@ type RelatedProductsProps = {
 const RelatedProducts = ({ product }: RelatedProductsProps) => {
   const { products } = useProducts({
     limit: 5,
-    offset: 0,
     category: product.category,
   });
 

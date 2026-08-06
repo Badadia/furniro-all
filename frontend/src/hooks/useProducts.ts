@@ -5,15 +5,15 @@ import { useEffect, useState } from "react";
 type UseProductsProps = {
   category?: string;
   sort?: string;
-  limit: number;
-  offset: number;
+  limit?: number;
+  offset?: number;
 };
 
 export const useProducts = ({
   category = "all",
   sort = "default",
-  limit,
-  offset,
+  limit = 12,
+  offset = 0,
 }: UseProductsProps) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [total, setTotal] = useState(0);
