@@ -5,9 +5,9 @@ import ProductDetails from "../components/ProductDetails";
 import ProductGallery from "../components/ProductGallery";
 import ProductInfo from "../components/ProductInfo";
 import RelatedProducts from "../components/RelatedProducts";
-import ErrorState from "../components/status/ErrorState";
-import LoadingState from "../components/status/LoadingState";
-import NotFoundState from "../components/status/NotFoundState";
+import ErrorState from "../components/Status/ErrorState";
+import LoadingState from "../components/Status/LoadingState";
+import NotFoundState from "../components/Status/NotFoundState";
 import { useProduct } from "../hooks/useProduct";
 
 export const SingleProduct = () => {
