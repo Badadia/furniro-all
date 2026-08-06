@@ -1,12 +1,12 @@
 import type { Product } from "@/types/product";
 import { calculateDiscount, formatPrice } from "@/utils/price";
 import { useProductVariant } from "../../hooks/useProductVariant";
-import { QuantityInput } from "../Cart/QuantityInput";
 import AddToCartButton from "./AddToCartButton";
 import ProductColors from "./ProductColors";
 import ProductMeta from "./ProductMeta";
 import ProductPrice from "./ProductPrice";
 import ProductSizes from "./ProductSizes";
+import { QuantitySelector } from "./QuantitySelector";
 
 type ProductInfoProps = {
   product: Product;
@@ -16,8 +16,11 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
   const {
     selectedSize,
     selectedColor,
+    quantity,
     setSelectedSize,
     setSelectedColor,
+    increaseQuantity,
+    decreaseQuantity,
     addToCart,
   } = useProductVariant(product);
 
@@ -59,7 +62,11 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
       />
 
       <div className="mt-8 flex flex-wrap gap-4">
-        <QuantityInput id={product.id} item={product} />
+        <QuantitySelector
+          value={quantity}
+          onDecrease={decreaseQuantity}
+          onIncrease={increaseQuantity}
+        />
 
         <AddToCartButton onClick={addToCart} />
       </div>
