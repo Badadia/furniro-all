@@ -30,7 +30,7 @@ const Breadcrumb = ({ category, productName, className }: BreadcrumbProps) => {
         </li>
 
         <Link
-          to={`/shop/${category}`}
+          to={`/shop/${category.toLowerCase()}`}
           className={"text-[#9F9F9F] hover:text-black transition"}
         >
           {category}
