@@ -1,5 +1,5 @@
+import { api } from "@/lib/axios";
 import type { Product } from "@/types/product";
-import axios from "axios";
 import { useEffect, useState } from "react";
 
 type UseProductsProps = {
@@ -45,7 +45,7 @@ export const useProducts = ({
           params._order = "desc";
         }
 
-        const response = await axios.get("http://localhost:3000/products", {
+        const response = await api.get("/products", {
           params,
         });
 

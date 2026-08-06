@@ -1,5 +1,5 @@
+import { useProducts } from "@/hooks/UseProducts";
 import type { Product } from "@/types/product";
-import { useRelatedProducts } from "../features/single-product/hooks/useRelatedProducts";
 import ProductGrid from "./ProductGrid/ProductGrid";
 
 type RelatedProductsProps = {
@@ -7,13 +7,19 @@ type RelatedProductsProps = {
 };
 
 const RelatedProducts = ({ product }: RelatedProductsProps) => {
-  const related = useRelatedProducts(product);
+  const { products } = useProducts({
+    limit: 5,
+    offset: 0,
+    category: product.category,
+  });
 
-  if (related.length === 0) {
+  if (products.length === 0) {
     return null;
   }
 
-  return <ProductGrid products={related} title="Related Products" />;
+  const relatedProducts = products.filter((p) => p.id !== product.id);
+
+  return <ProductGrid products={relatedProducts} title="Related Products" />;
 };
 
 export default RelatedProducts;
