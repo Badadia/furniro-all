@@ -1,3 +1,4 @@
+import { ProductGridSkeleton } from "@/components/Skeletons/ProductGridSkeleton";
 import { useProducts } from "@/hooks/useProducts";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router";
@@ -41,13 +42,16 @@ export const Shop = () => {
 
   const effectiveOffset = !loading && total > 0 && offset >= total ? 0 : offset;
 
-  const resultText = `Showing ${products.length} results`;
+  const resultText = loading
+    ? "Loading products..."
+    : `Showing ${products.length} results`;
 
   return (
     <div>
       <PageBanner title="Shop" breadcrumbHome="Home" breadcrumbCurrent="Shop" />
 
       <ShopToolBar
+        disabled={loading}
         category={category}
         onCategoryChange={handleCategoryChange}
         sort={sort}
@@ -59,20 +63,22 @@ export const Shop = () => {
 
       <div className="mt-20">
         {loading ? (
-          <p className="text-center">Loading products...</p>
+          <ProductGridSkeleton count={8} />
         ) : (
           <ProductGrid products={products} />
         )}
       </div>
 
-      <div className="mb-22">
-        <Pagination
-          limit={limit}
-          total={total}
-          offset={effectiveOffset}
-          onPageChange={setOffset}
-        />
-      </div>
+      {!loading && (
+        <div className="mb-22">
+          <Pagination
+            limit={limit}
+            total={total}
+            offset={effectiveOffset}
+            onPageChange={setOffset}
+          />
+        </div>
+      )}
 
       <Benefits />
     </div>
