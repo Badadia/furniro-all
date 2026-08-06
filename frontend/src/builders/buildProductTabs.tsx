@@ -1,9 +1,9 @@
-import type { ProductDetailsTab } from "../../../components/ProductDetails/types";
+import type { Product } from "@/types/product";
+import type { ProductDetailsTab } from "../components/ProductDetails/types";
 import {
   ADDITIONAL_INFORMATION_TAB_LABEL,
   DESCRIPTION_TAB_LABEL,
 } from "../constants/messages";
-import type { Product } from "@/types/product";
 
 export function buildProductTabs(product: Product): ProductDetailsTab[] {
   return [

@@ -1,6 +1,6 @@
 import type { Product } from "@/types/product";
 import { calculateDiscount, formatPrice } from "@/utils/price";
-import { useProductVariant } from "../../features/single-product/hooks/useProductVariant";
+import { useProductVariant } from "../../hooks/useProductVariant";
 import { QuantityInput } from "../Cart/QuantityInput";
 import AddToCartButton from "./AddToCartButton";
 import ProductColors from "./ProductColors";

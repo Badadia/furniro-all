@@ -1,4 +1,4 @@
-import { useProducts } from "@/hooks/UseProducts";
+import { useProducts } from "@/hooks/useProducts";
 import type { Product } from "@/types/product";
 import ProductGrid from "./ProductGrid/ProductGrid";
 

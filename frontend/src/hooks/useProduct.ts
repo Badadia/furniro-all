@@ -1,6 +1,6 @@
+import type { Product } from "@/types/product";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import type { Product } from "@/types/product";
 import {
   getProductById,
   getProductBySlug,
@@ -20,7 +20,9 @@ export function useProduct(identifier: string, mode: ProductLookupMode = "id") {
     let active = true;
 
     const request =
-      mode === "slug" ? getProductBySlug(identifier) : getProductById(identifier);
+      mode === "slug"
+        ? getProductBySlug(identifier)
+        : getProductById(identifier);
 
     request
       .then((data) => {

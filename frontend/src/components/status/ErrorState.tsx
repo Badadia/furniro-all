@@ -1,4 +1,4 @@
-import { ERROR_MESSAGE, TRY_AGAIN } from "../../features/single-product/constants/messages";
+import { ERROR_MESSAGE, TRY_AGAIN } from "../../constants/messages";
 
 type ErrorStateProps = {
   onRetry: () => void;

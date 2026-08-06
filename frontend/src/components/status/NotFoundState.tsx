@@ -1,4 +1,4 @@
-import { PRODUCT_NOT_FOUND_MESSAGE } from "../../features/single-product/constants/messages";
+import { PRODUCT_NOT_FOUND_MESSAGE } from "../../constants/messages";
 
 const NotFoundState = () => {
   return (

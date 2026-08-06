@@ -1,4 +1,4 @@
-import { LOADING_MESSAGE } from "../../features/single-product/constants/messages";
+import { LOADING_MESSAGE } from "../../constants/messages";
 
 const LoadingState = () => {
   return (

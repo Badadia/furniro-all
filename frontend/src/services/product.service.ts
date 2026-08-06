@@ -1,6 +1,6 @@
-import { z } from "zod";
-import type { Product } from "@/types/product";
 import { API_BASE_URL, MOCK_BASE_URL, USE_MOCK } from "@/config/env";
+import type { Product } from "@/types/product";
+import { z } from "zod";
 
 export class ProductNotFoundError extends Error {
   constructor(message = "Product not found.") {
@@ -32,7 +32,9 @@ function parseStringArray(value: unknown): string[] {
     try {
       const parsed: unknown = JSON.parse(value);
       if (Array.isArray(parsed)) {
-        return parsed.filter((item): item is string => typeof item === "string");
+        return parsed.filter(
+          (item): item is string => typeof item === "string",
+        );
       }
     } catch {
       // não é JSON válido — cai no fallback de array vazio
@@ -77,23 +79,6 @@ function unwrapPayload(data: unknown): unknown {
   return data;
 }
 
-function unwrapListPayload(data: unknown): unknown[] {
-  if (Array.isArray(data)) {
-    return data;
-  }
-
-  if (
-    data !== null &&
-    typeof data === "object" &&
-    "data" in data &&
-    Array.isArray((data as { data: unknown }).data)
-  ) {
-    return (data as { data: unknown[] }).data;
-  }
-
-  return [];
-}
-
 function validateProduct(raw: unknown): Product {
   const result = ProductSchema.safeParse(raw);
 
@@ -125,13 +110,17 @@ async function fetchProduct(
   let raw: unknown;
 
   if (USE_MOCK && !bySlug) {
-    const response = await fetchOrThrow(`${MOCK_BASE_URL}/singleProducts/${identifier}`);
+    const response = await fetchOrThrow(
+      `${MOCK_BASE_URL}/singleProducts/${identifier}`,
+    );
 
     if (!response.ok) {
       if (response.status === 404) {
         throw new ProductNotFoundError();
       }
-      throw new ProductApiError(`Failed to fetch product (HTTP ${response.status}).`);
+      throw new ProductApiError(
+        `Failed to fetch product (HTTP ${response.status}).`,
+      );
     }
 
     raw = await response.json();
@@ -183,41 +172,4 @@ export function getProductById(id: string): Promise<Product | null> {
 
 export function getProductBySlug(slug: string): Promise<Product | null> {
   return fetchProduct(slug, true);
-}
-
-export async function getRelatedProducts(
-  category: string,
-  excludeId: string,
-  limit = 4,
-): Promise<Product[]> {
-  try {
-    const url = USE_MOCK
-      ? `${MOCK_BASE_URL}/singleProducts?category=${encodeURIComponent(category)}`
-      : `${API_BASE_URL}/products?category=${encodeURIComponent(category)}`;
-
-    const response = await fetch(url);
-
-    if (!response.ok) {
-      return [];
-    }
-
-    const raw: unknown = await response.json();
-    const payload = unwrapListPayload(raw);
-
-    const products: Product[] = [];
-
-    for (const item of payload) {
-      const result = ProductSchema.safeParse(item);
-      if (result.success && result.data.id !== excludeId) {
-        products.push(result.data);
-      }
-      if (products.length >= limit) {
-        break;
-      }
-    }
-
-    return products;
-  } catch {
-    return [];
-  }
 }

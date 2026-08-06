@@ -5,12 +5,12 @@ import Pagination from "../components/Pagination/Pagination";
 import ProductGrid from "../components/ProductGrid/ProductGrid";
 import PageBanner from "../components/Shop/PageBanner";
 import ShopToolBar from "../components/ShopToolBar/ShopToolBar";
-import { useProducts } from "../hooks/UseProducts";
+import { useProducts } from "../hooks/useProducts";
 
 // TODO: colocar isso numa pasta de constantes
 const CATEGORIES = ["Dining", "Living", "Bedroom"];
 
-const Shop = () => {
+export const Shop = () => {
   const { category: categoryParam } = useParams();
 
   const [category, setCategory] = useState(() => {
@@ -68,5 +68,3 @@ const Shop = () => {
     </div>
   );
 };
-
-export default Shop;

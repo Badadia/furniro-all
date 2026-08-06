@@ -1,4 +1,4 @@
-import { useGallery } from "../features/single-product/hooks/useGallery";
+import { useGallery } from "../hooks/useGallery";
 import { getImage } from "../lib/assets";
 
 type ProductGalleryProps = {
@@ -21,9 +21,7 @@ const ProductGallery = ({ images }: ProductGalleryProps) => {
             key={image}
             onClick={() => setSelectedImage(image)}
             className={`flex h-[80px] w-[80px] items-center justify-center rounded-lg bg-[#F9F1E7] ${
-              selectedImage === image
-                ? "ring-2 ring-primary-text-200"
-                : ""
+              selectedImage === image ? "ring-2 ring-primary-text-200" : ""
             }`}
           >
             <img

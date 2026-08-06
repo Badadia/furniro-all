@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
+import { buildProductTabs } from "../builders/buildProductTabs";
 import Breadcrumb from "../components/BreadCrumb/BreadCrumb";
-import { buildProductTabs } from "../features/single-product/builders/buildProductTabs";
 import ProductDetails from "../components/ProductDetails";
 import ProductGallery from "../components/ProductGallery";
 import ProductInfo from "../components/ProductInfo";
@@ -8,9 +8,9 @@ import RelatedProducts from "../components/RelatedProducts";
 import ErrorState from "../components/status/ErrorState";
 import LoadingState from "../components/status/LoadingState";
 import NotFoundState from "../components/status/NotFoundState";
-import { useProduct } from "../features/single-product/hooks/useProduct";
+import { useProduct } from "../hooks/useProduct";
 
-const SingleProductPage = () => {
+export const SingleProduct = () => {
   const { id, slug } = useParams();
   const mode = slug ? "slug" : "id";
   const identifier = slug ?? id ?? "";
@@ -52,5 +52,3 @@ const SingleProductPage = () => {
     </>
   );
 };
-
-export default SingleProductPage;

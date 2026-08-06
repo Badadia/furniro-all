@@ -1,7 +1,4 @@
-import {
-  SELECT_COLOR_ERROR,
-  SELECT_SIZE_ERROR,
-} from "../constants/messages";
+import { SELECT_COLOR_ERROR, SELECT_SIZE_ERROR } from "../constants/messages";
 
 export function validateVariant(
   selectedSize: string,

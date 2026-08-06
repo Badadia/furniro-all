@@ -1,4 +1,4 @@
-import { ADDED_TO_CART_MESSAGE } from "@/features/single-product/constants/messages";
+import { ADDED_TO_CART_MESSAGE } from "@/constants/messages";
 import toast from "react-hot-toast";
 import { useCartStore, type CartProduct } from "../../stores/cart.store";
 
