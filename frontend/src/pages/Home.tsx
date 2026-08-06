@@ -1,29 +1,28 @@
+import { ProductGridSkeleton } from "@/components/Skeletons/ProductGridSkeleton";
+import { useProducts } from "@/hooks/useProducts";
 import RoomCarousel from "../components/Carousel/RoomCarousel";
-import Categories from "../components/Categories/Categories";
+import CategoriesGrid from "../components/Categories/CategoriesGrid";
 import Container from "../components/Container";
 import Hero from "../components/Hero/Hero";
 import Mosaic from "../components/Mosaic/Mosaic";
 import ProductGrid from "../components/ProductGrid/ProductGrid";
 
-const Home = () => {
+export const Home = () => {
+  const { products, loading } = useProducts({});
+
   return (
     <div>
+      <Hero />
       <Container>
-        <Hero></Hero>
-      </Container>
-      <Container>
-        <Categories></Categories>
-      </Container>
-      <Container>
-        <ProductGrid></ProductGrid>
-      </Container>
-      <Container>
-        <RoomCarousel></RoomCarousel>
-      </Container>
-      <Container>
-        <Mosaic></Mosaic>
+        <CategoriesGrid />
+        {loading ? (
+          <ProductGridSkeleton count={8} title="Our Products" />
+        ) : (
+          <ProductGrid products={products} title="Our Products" />
+        )}
+        <RoomCarousel />
+        <Mosaic />
       </Container>
     </div>
   );
 };
-export default Home;

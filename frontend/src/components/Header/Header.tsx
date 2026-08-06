@@ -6,32 +6,28 @@ import RightMenu from "./RigthMenu";
 
 const Header = () => {
   return (
-    <div>
+    <header
+      className={clsx(
+        "flex justify-center items-center bg-white",
+        "h-25 w-full",
+        "sticky z-50 top-0",
+        "bg-primary",
+      )}
+    >
       <div
         className={clsx(
-          "flex justify-center items-center",
-          "h-25 w-full max-w-360",
-          "fixed z-50",
-          "bg-primary",
+          "flex justify-between items-center",
+          "w-full max-w-[1280px] px-2",
+          "md:px-4",
+          "lg:px-12.5",
         )}
       >
-        <div
-          className={clsx(
-            "flex justify-between items-center",
-            "w-full px-2 max-h-10.25",
-            "md:px-4",
-            "lg:px-12.5",
-          )}
-        >
-          <Logo></Logo>
-          <NavMenu className={clsx("hidden", "md:flex")}></NavMenu>
-          <RightMenu className={clsx("hidden", "md:flex")}></RightMenu>
-          <MobileMenu className={clsx("flex", "md:hidden")}></MobileMenu>
-        </div>
+        <Logo />
+        <NavMenu className={clsx("hidden", "md:flex")} />
+        <RightMenu className={clsx("hidden", "md:flex")} />
+        <MobileMenu className={clsx("flex", "md:hidden")} />
       </div>
-      {/*Essa div serve apenas como elemento para preencher o espaço do fixed*/}
-      <div className={clsx("h-25", "-z-50")}></div>
-    </div>
+    </header>
   );
 };
 export default Header;

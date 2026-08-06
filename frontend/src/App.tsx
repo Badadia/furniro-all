@@ -1,19 +1,27 @@
-import Home from "./pages/Home"
-import Container from "./components/Container"
-import Header from "./components/Header/Header"
-import Footer from "./components/Footer/Footer"
-import { Toaster } from "react-hot-toast"
+import { BrowserRouter, Route, Routes } from "react-router";
+import { RootLayout } from "./layout";
+import { ScrollToTop } from "./components/ScrollToTop/ScrollToTop";
+import { Cart } from "./pages/Cart";
+import { Home } from "./pages/Home";
+import { Shop } from "./pages/Shop";
+import { SingleProduct } from "./pages/SingleProduct";
+import { NotFound } from "./components/NotFound";
 
-function App() {
-
+export default function App() {
   return (
-    <>
-      <Toaster/>
-      <Container className="bg-[#FFF]"><Header></Header></Container>
-      <Home></Home>
-      <Container><Footer></Footer></Container>
-    </>
-  )
+    <BrowserRouter>
+      <ScrollToTop />
+      <Routes>
+        <Route element={<RootLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/shop/:category" element={<Shop />} />
+          <Route path="/product/:id" element={<SingleProduct />} />
+          <Route path="/product/slug/:slug" element={<SingleProduct />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
-
-export default App

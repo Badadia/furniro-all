@@ -1,0 +1,39 @@
+{
+  "name": "backend-furniro",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node --env-file=.env dist/index.js",
+    "dev": "tsx watch --env-file=.env src/index.ts",
+    "build": "tsc",
+    "db:migrate": "prisma migrate dev",
+    "db:seed": "prisma db seed",
+    "prisma:generate": "prisma generate",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
+  "keywords": [],
+  "author": "Bruna Karla, Bryan, Gian, José Jefferson e Tulio Vasconcelos",
+  "license": "ISC",
+  "description": "API RESTful para o desafio 2 do Furniro, utilizando Node.js e Express.",
+  "dependencies": {
+    "@prisma/client": "^6.4.1",
+    "axios": "^1.19.0",
+    "cloudinary": "^2.10.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "http-status-codes": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.1.2",
+    "nodemon": "^3.1.14",
+    "prisma": "^6.4.1",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.23.1",
+    "typescript": "^5.7.3"
+  }
+}
