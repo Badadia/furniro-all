@@ -194,6 +194,12 @@ The local product mock (JSON Server) runs at:
 http://localhost:3001
 ```
 
+### How to run Tests and see coverage
+
+```bash
+npm run test:coverage 
+```
+
 ### Main routes
 
 - `/` — Home

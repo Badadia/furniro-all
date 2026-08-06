@@ -77,7 +77,9 @@ describe("SingleProduct", () => {
   it("should show the loading state while the product is fetched", () => {
     renderAt("/product/1");
 
-    expect(screen.getByText("Loading product...")).toBeInTheDocument();
+    expect(
+      screen.getByRole("main").querySelector(".animate-pulse"),
+    ).toBeInTheDocument();
     expect(
       screen.queryByRole("heading", { level: 1, name: "Syltherine" }),
     ).not.toBeInTheDocument();
