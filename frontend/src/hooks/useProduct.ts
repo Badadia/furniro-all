@@ -1,11 +1,8 @@
+import { ProductNotFoundError } from "@/errors/product";
 import type { Product } from "@/types/product";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import {
-  getProductById,
-  getProductBySlug,
-  ProductNotFoundError,
-} from "../services/product.service";
+import { getProductById, getProductBySlug } from "../services/product.service";
 
 type ProductStatus = "loading" | "success" | "notfound" | "error";
 
