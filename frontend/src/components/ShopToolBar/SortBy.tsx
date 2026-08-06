@@ -1,11 +1,13 @@
 import { SORT_OPTIONS } from "@/constants/shop";
+import clsx from "clsx";
 
 interface SortByProps {
   sort: string;
+  disabled: boolean;
   onSortChange: (sort: string) => void;
 }
 
-function SortBy({ sort, onSortChange }: SortByProps) {
+function SortBy({ sort, onSortChange, disabled }: SortByProps) {
   return (
     <div
       className="
@@ -27,8 +29,10 @@ function SortBy({ sort, onSortChange }: SortByProps) {
 
       <select
         value={sort}
+        disabled={disabled}
         onChange={(event) => onSortChange(event.target.value)}
-        className={`
+        className={clsx(
+          `
           h-[55px]
           w-[150px]
           sm:w-[188px]
@@ -40,9 +44,10 @@ function SortBy({ sort, onSortChange }: SortByProps) {
           text-[14px]
           sm:text-[16px]
           outline-none
-
-          ${sort === "default" ? "text-[#9F9F9F]" : "text-black"}
-        `}
+        `,
+          sort === "default" ? "text-[#9F9F9F]" : "text-black",
+          disabled && "cursor-not-allowed opacity-50",
+        )}
       >
         {SORT_OPTIONS.map((option) => (
           <option key={option.value} value={option.value}>

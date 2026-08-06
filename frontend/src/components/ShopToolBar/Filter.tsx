@@ -1,12 +1,14 @@
 import { CATEGORIES_OPTIONS } from "@/constants/shop";
+import clsx from "clsx";
 import { useState } from "react";
 
 interface FilterProps {
   category: string;
+  disabled: boolean;
   onChange: (category: string) => void;
 }
 
-function Filter({ category, onChange }: FilterProps) {
+function Filter({ category, onChange, disabled }: FilterProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   function handleSelect(value: string) {
@@ -18,13 +20,11 @@ function Filter({ category, onChange }: FilterProps) {
     <div className="relative">
       <button
         type="button"
-        onClick={() => setIsOpen((prev) => !prev)}
-        className="
-          flex items-center gap-3
-          cursor-pointer
-          hover:text-gray-600
-          transition
-        "
+        onClick={() => !disabled && setIsOpen((prev) => !prev)}
+        className={clsx(
+          "flex items-center gap-3 hover:text-gray-600 transition",
+          disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer",
+        )}
       >
         <img src="/IconsShopTool/filter.svg" alt="Filter" />
 
