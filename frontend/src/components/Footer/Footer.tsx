@@ -1,4 +1,4 @@
-import { IconLink } from "./IconLink";
+import { IconLink } from "../IconLink";
 import { Links } from "./Links";
 import { Newsletter } from "./Newsletter";
 
@@ -18,23 +18,27 @@ export default function Footer() {
             <div className="mt-13.75 flex gap-4 sm:gap-6 md:gap-7 lg:gap-9 xl:gap-11.5">
               <IconLink
                 href="https://www.facebook.com/airevolutioncompany/"
-                iconSrc="/Icons/facebook.png"
+                iconSrc="/Icons/facebook-icon.svg"
                 alt="Facebook"
+                css="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-[0_0_12px_rgba(0,0,0,0.2)]"
               />
               <IconLink
                 href="https://www.instagram.com/aircompany.ai/"
                 alt="Instagram"
-                iconSrc="/Icons/instagram.png"
+                iconSrc="/Icons/instagram-icon.svg"
+                css="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-[0_0_12px_rgba(0,0,0,0.2)]"
               />
               <IconLink
                 href="https://www.instagram.com/aircompany.ai/"
                 alt="Twitter"
-                iconSrc="/Icons/twitter.png"
+                iconSrc="/Icons/twitter-icon.svg"
+                css="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-[0_0_12px_rgba(0,0,0,0.2)]"
               />
               <IconLink
                 href="https://www.linkedin.com/company/airevolutioncompany/"
-                iconSrc="/Icons/linkedin.png"
+                iconSrc="/Icons/linkedin-icon.svg"
                 alt="LinkedIn"
+                css="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-[0_0_12px_rgba(0,0,0,0.2)]"
               />
             </div>
           </div>
@@ -65,7 +69,7 @@ export default function Footer() {
 
         <div className="mt-12 border-t border-footer pt-8.75">
           <p className="text-center text-black sm:text-left">
-            2023 furino. All rights reserved
+            2023 furniro. All rights reserved
           </p>
         </div>
       </div>
