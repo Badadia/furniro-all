@@ -1,3 +1,4 @@
+import { CATEGORIES_OPTIONS } from "@/constants/shop";
 import { useState } from "react";
 
 interface FilterProps {
@@ -5,29 +6,7 @@ interface FilterProps {
   onChange: (category: string) => void;
 }
 
-const categories = [
-  {
-    label: "All",
-    value: "all",
-  },
-  {
-    label: "Dining",
-    value: "Dining",
-  },
-  {
-    label: "Living",
-    value: "Living",
-  },
-  {
-    label: "Bedroom",
-    value: "Bedroom",
-  },
-];
-
-function Filter({
-  category,
-  onChange,
-}: FilterProps) {
+function Filter({ category, onChange }: FilterProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   // Atualiza a categoria selecionada e fecha o menu.
@@ -46,10 +25,7 @@ function Filter({
           cursor-pointer
         "
       >
-        <img
-          src="/IconsShopTool/filter.svg"
-          alt="Filter"
-        />
+        <img src="/IconsShopTool/filter.svg" alt="Filter" />
 
         <span
           className="
@@ -60,7 +36,6 @@ function Filter({
         >
           Filter
         </span>
-        
       </button>
 
       {isOpen && (
@@ -73,7 +48,7 @@ function Filter({
             shadow-lg
           "
         >
-          {categories.map((item) => (
+          {CATEGORIES_OPTIONS.map((item) => (
             <button
               key={item.value}
               type="button"
@@ -88,11 +63,7 @@ function Filter({
 
                 hover:bg-[#F9F1E7]
 
-                ${
-                  category === item.value
-                    ? "bg-[#F9F1E7] font-medium"
-                    : ""
-                }
+                ${category === item.value ? "bg-[#F9F1E7] font-medium" : ""}
               `}
             >
               {item.label}

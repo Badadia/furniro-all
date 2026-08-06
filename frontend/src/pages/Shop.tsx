@@ -1,3 +1,4 @@
+import { CATEGORIES } from "@/constants/shop";
 import { useProducts } from "@/hooks/useProducts";
 import { useState } from "react";
 import { useParams } from "react-router";
@@ -6,9 +7,6 @@ import Pagination from "../components/Pagination/Pagination";
 import ProductGrid from "../components/ProductGrid/ProductGrid";
 import PageBanner from "../components/Shop/PageBanner";
 import ShopToolBar from "../components/ShopToolBar/ShopToolBar";
-
-// TODO: colocar isso numa pasta de constantes
-const CATEGORIES = ["Dining", "Living", "Bedroom"];
 
 export const Shop = () => {
   const { category: categoryParam } = useParams();
