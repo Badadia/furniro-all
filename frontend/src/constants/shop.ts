@@ -7,7 +7,7 @@ export const CATEGORIES_OPTIONS = [
   },
   ...CATEGORIES.map((category) => ({
     label: category,
-    value: category,
+    value: category.toLowerCase(),
   })),
 ];
 

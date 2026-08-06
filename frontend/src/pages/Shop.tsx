@@ -1,26 +1,26 @@
-import { useProducts } from "@/hooks/useProducts"
-import { useState } from "react"
-import { useNavigate, useParams } from "react-router"
-import Benefits from "../components/Benefits/Benefits"
-import Pagination from "../components/Pagination/Pagination"
-import ProductGrid from "../components/ProductGrid/ProductGrid"
-import PageBanner from "../components/Shop/PageBanner"
-import ShopToolBar from "../components/ShopToolBar/ShopToolBar"
+import { useProducts } from "@/hooks/useProducts";
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router";
+import Benefits from "../components/Benefits/Benefits";
+import Pagination from "../components/Pagination/Pagination";
+import ProductGrid from "../components/ProductGrid/ProductGrid";
+import PageBanner from "../components/Shop/PageBanner";
+import ShopToolBar from "../components/ShopToolBar/ShopToolBar";
 
 export const Shop = () => {
-  const { category: categoryParam } = useParams()
-  const navigate = useNavigate()
+  const { category: categoryParam } = useParams();
+  const navigate = useNavigate();
 
-  const category = categoryParam || "all"
+  const category = categoryParam || "all";
 
-  const [sort, setSort] = useState("default")
-  const [limit, setLimit] = useState(16)
-  const [offset, setOffset] = useState(0)
+  const [sort, setSort] = useState("default");
+  const [limit, setLimit] = useState(16);
+  const [offset, setOffset] = useState(0);
 
   const handleCategoryChange = (newCategory: string) => {
-    navigate(newCategory === "all" ? "/shop" : `/shop/${newCategory}`)
-    setOffset(0)
-  }
+    navigate(newCategory === "all" ? "/shop" : `/shop/${newCategory}`);
+    setOffset(0);
+  };
 
   const handleSortChange = (newSort: string) => {
     setSort(newSort);
@@ -37,11 +37,11 @@ export const Shop = () => {
     sort,
     limit,
     offset,
-  })
+  });
 
-  const effectiveOffset = !loading && total > 0 && offset >= total ? 0 : offset
+  const effectiveOffset = !loading && total > 0 && offset >= total ? 0 : offset;
 
-  const resultText = `Showing ${products.length} results`
+  const resultText = `Showing ${products.length} results`;
 
   return (
     <div>
@@ -76,5 +76,5 @@ export const Shop = () => {
 
       <Benefits />
     </div>
-  )
-}
+  );
+};
