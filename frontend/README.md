@@ -58,7 +58,7 @@ npm install
 2. Configure environment variables:
 
 ```bash
-cp env.example .env
+cp .env.example .env
 ```
 
 Main variables:
@@ -204,7 +204,7 @@ npm install
 2. Configurar variáveis de ambiente:
 
 ```bash
-cp env.example .env
+cp .env.example .env
 ```
 
 Variáveis principais:

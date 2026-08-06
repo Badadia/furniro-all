@@ -72,7 +72,7 @@ O endpoint `GET /products` suporta filtros e paginação por meio de query param
 ```bash
 cd frontend
 npm install
-cp env.example .env
+cp .env.example .env
 npm run server
 npm run dev
 ```
@@ -177,7 +177,7 @@ The `GET /products` endpoint supports filtering and pagination through query par
 ```bash
 cd frontend
 npm install
-cp env.example .env
+cp .env.example .env
 npm run server
 npm run dev
 ```
