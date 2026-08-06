@@ -9,9 +9,17 @@ function Pagination({ limit, total, offset, onPageChange }: PaginationProps) {
   const currentPage = offset / limit + 1;
   const totalPages = Math.ceil(total / limit);
 
+  const goToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   const handlePageChange = (page: number) => {
     const newOffset = (page - 1) * limit;
     onPageChange(newOffset);
+    goToTop();
   };
 
   const handleNext = () => {
@@ -20,6 +28,7 @@ function Pagination({ limit, total, offset, onPageChange }: PaginationProps) {
     } else {
       handlePageChange(currentPage + 1);
     }
+    goToTop();
   };
 
   return (
