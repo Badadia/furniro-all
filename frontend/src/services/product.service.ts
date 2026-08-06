@@ -1,5 +1,6 @@
 import { API_BASE_URL, MOCK_BASE_URL, USE_MOCK } from "@/config/env";
-import type { Product } from "@/types/product";
+import { api } from "@/lib/axios";
+import type { Product, ProductsAPIResponse } from "@/types/product";
 import { z } from "zod";
 
 export class ProductNotFoundError extends Error {
@@ -172,4 +173,14 @@ export function getProductById(id: string): Promise<Product | null> {
 
 export function getProductBySlug(slug: string): Promise<Product | null> {
   return fetchProduct(slug, true);
+}
+
+export async function getProducts(
+  params: Record<string, string | number>,
+): Promise<ProductsAPIResponse> {
+  const res = await api.get("/products", {
+    params,
+  });
+
+  return res.data;
 }

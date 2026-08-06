@@ -1,4 +1,4 @@
-import { api } from "@/lib/axios";
+import { getProducts } from "@/services/product.service";
 import type { Product } from "@/types/product";
 import { useEffect, useState } from "react";
 
@@ -45,12 +45,10 @@ export const useProducts = ({
           params._order = "desc";
         }
 
-        const response = await api.get("/products", {
-          params,
-        });
+        const { data, total } = await getProducts(params);
 
-        setProducts(response.data.data);
-        setTotal(response.data.total);
+        setProducts(data);
+        setTotal(total);
       } catch (error) {
         console.error("Erro ao buscar produtos:", error);
       } finally {

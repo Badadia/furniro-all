@@ -14,3 +14,10 @@ export interface Product {
   sizes: string[];
   isNew: boolean;
 }
+
+export type ProductsAPIResponse = {
+  data: Product[];
+  total: number;
+  page: number;
+  totalPages: number;
+};
