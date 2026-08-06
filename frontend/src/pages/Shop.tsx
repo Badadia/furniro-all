@@ -44,7 +44,7 @@ export const Shop = () => {
 
   const resultText = loading
     ? "Loading products..."
-    : `Showing ${products.length} results`;
+    : `Showing ${total} results`;
 
   return (
     <div>
