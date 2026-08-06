@@ -4,9 +4,6 @@ import { calculateDiscount, formatPrice } from "@/utils/price";
 import toast from "react-hot-toast";
 import { Link } from "react-router";
 import { getImage } from "../../lib/assets";
-import compare from "/Icons/compare.svg";
-import like from "/Icons/like.svg";
-import share from "/Icons/share.svg";
 
 type ProductGridCardProps = {
   href: string;
@@ -91,7 +88,7 @@ const ProductGridCard = ({ href, product }: ProductGridCardProps) => {
             onClick={handleOverlayAction}
             className="flex gap-px font-poppins text-[16px] font-semibold text-primary transition hover:opacity-80"
           >
-            <img src={share} alt="" />
+            <img src="/Icons/share.svg" alt="" />
             Share
           </button>
 
@@ -100,7 +97,7 @@ const ProductGridCard = ({ href, product }: ProductGridCardProps) => {
             onClick={handleOverlayAction}
             className="flex gap-px font-poppins text-[16px] font-semibold text-primary transition hover:opacity-80"
           >
-            <img src={compare} alt="" />
+            <img src="/Icons/compare.svg" alt="" />
             Compare
           </button>
 
@@ -109,7 +106,7 @@ const ProductGridCard = ({ href, product }: ProductGridCardProps) => {
             onClick={handleOverlayAction}
             className="flex gap-px font-poppins text-[16px] font-semibold text-primary transition hover:opacity-80"
           >
-            <img src={like} alt="" />
+            <img src="/Icons/like.svg" alt="" />
             Like
           </button>
         </div>
