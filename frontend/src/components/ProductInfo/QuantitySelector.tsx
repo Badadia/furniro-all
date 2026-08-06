@@ -1,26 +1,26 @@
-import { useCartStore } from "../../stores/cart.store";
-
-type QuantityInputProps = {
-  id: string;
+type QuantitySelectorProps = {
+  value: number;
+  onDecrease: () => void;
+  onIncrease: () => void;
 };
 
-export function QuantityInput({ id }: QuantityInputProps) {
-  const total = useCartStore((s) => s.getItemQuantity(id));
-  const increase = useCartStore((s) => s.increaseQuantity);
-  const decrease = useCartStore((s) => s.decreaseQuantity);
-
+export function QuantitySelector({
+  value,
+  onDecrease,
+  onIncrease,
+}: QuantitySelectorProps) {
   return (
     <div className="inline-flex w-fit overflow-hidden rounded-[10px] border border-footer-gray">
       <button
         type="button"
-        onClick={() => decrease(id)}
+        onClick={onDecrease}
         className="flex cursor-pointer items-center justify-center px-3 py-3.5 transition hover:bg-footer-gray/10"
       >
         -
       </button>
 
       <input
-        value={total}
+        value={value}
         type="number"
         readOnly
         className=" w-10 text-center outline-none
@@ -31,7 +31,7 @@ export function QuantityInput({ id }: QuantityInputProps) {
 
       <button
         type="button"
-        onClick={() => increase(id)}
+        onClick={onIncrease}
         className="flex cursor-pointer items-center justify-center px-3 py-3.5 transition hover:bg-footer-gray/10"
       >
         +
