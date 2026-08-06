@@ -1,4 +1,4 @@
-import { API_BASE_URL, MOCK_BASE_URL, USE_MOCK } from "@/config/env";
+import { API_BASE_URL } from "@/config/env";
 import {
   ProductApiError,
   ProductContractError,
@@ -92,58 +92,38 @@ async function fetchProduct(
     throw new ProductNotFoundError();
   }
 
-  let raw: unknown;
+  const url = bySlug
+    ? `${API_BASE_URL}/products/slug/${encodeURIComponent(identifier)}`
+    : `${API_BASE_URL}/products/${encodeURIComponent(identifier)}`;
 
-  if (USE_MOCK && !bySlug) {
-    const response = await fetchOrThrow(
-      `${MOCK_BASE_URL}/singleProducts/${identifier}`,
-    );
+  const response = await fetchOrThrow(url);
 
-    if (!response.ok) {
-      if (response.status === 404) {
-        throw new ProductNotFoundError();
-      }
-
-      throw new ProductApiError(
-        `Failed to fetch product (HTTP ${response.status}).`,
-      );
+  if (!response.ok) {
+    if (response.status === 404) {
+      throw new ProductNotFoundError();
     }
 
-    raw = await response.json();
-  } else {
-    const url = bySlug
-      ? `${API_BASE_URL}/products/slug/${encodeURIComponent(identifier)}`
-      : `${API_BASE_URL}/products/${encodeURIComponent(identifier)}`;
+    let message = `Failed to fetch product (HTTP ${response.status}).`;
 
-    const response = await fetchOrThrow(url);
+    try {
+      const body: unknown = await response.json();
 
-    if (!response.ok) {
-      if (response.status === 404) {
-        throw new ProductNotFoundError();
+      if (
+        body !== null &&
+        typeof body === "object" &&
+        "error" in body &&
+        typeof (body as { error: string }).error === "string"
+      ) {
+        message = (body as { error: string }).error;
       }
-
-      let message = `Failed to fetch product (HTTP ${response.status}).`;
-
-      try {
-        const body: unknown = await response.json();
-
-        if (
-          body !== null &&
-          typeof body === "object" &&
-          "error" in body &&
-          typeof (body as { error: string }).error === "string"
-        ) {
-          message = (body as { error: string }).error;
-        }
-      } catch {
-        // não é JSON válido — cai no fallback de array vazio
-      }
-
-      throw new ProductApiError(message);
+    } catch {
+      // não é JSON válido — cai no fallback de array vazio
     }
 
-    raw = await response.json();
+    throw new ProductApiError(message);
   }
+
+  const raw = await response.json();
 
   const payload = unwrapPayload(raw);
 
