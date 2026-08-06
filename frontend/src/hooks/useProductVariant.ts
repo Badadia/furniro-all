@@ -23,7 +23,7 @@ export function useProductVariant(product: Product) {
       toast.error(error);
       return;
     }
-
+    setQuantity(1);
     addItem(product, quantity);
     toast.success(`${product.name} ${ADDED_TO_CART_MESSAGE}`);
   };
