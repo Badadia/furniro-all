@@ -1,10 +1,10 @@
 import { API_BASE_URL, MOCK_BASE_URL, USE_MOCK } from "@/config/env";
-import { api } from "@/lib/axios";
 import {
   ProductApiError,
   ProductContractError,
   ProductNotFoundError,
-} from "@/errors";
+} from "@/errors/product";
+import { api } from "@/lib/axios";
 import type { Product, ProductsAPIResponse } from "@/types/product";
 import { z } from "zod";
 
