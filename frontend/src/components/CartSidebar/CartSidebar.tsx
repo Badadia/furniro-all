@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { FiX, FiLock } from "react-icons/fi";
 import { IoCloseCircle } from "react-icons/io5";
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { getImage } from "../../lib/assets";
 import { useCartStore } from "../../stores/cart.store";
 import { calculateDiscount, formatPrice } from "../../utils/price";
@@ -132,28 +132,21 @@ export const CartSidebar = () => {
             </span>
           </div>
 
-          <div className="flex items-center justify-between gap-3 border-t border-[#D9D9D9] pt-6">
+          <div className="flex items-center justify-between gap-4 border-t border-[#D9D9D9] pt-6">
             <button
               type="button"
               onClick={() => handleNavigate("/cart")}
-              className="flex-1 rounded-full border border-black px-5 py-2 text-center font-poppins text-xs font-medium text-black transition hover:bg-black hover:text-white cursor-pointer"
+              className="flex-1 rounded-full border border-black px-6 py-2.5 text-center font-poppins text-xs font-medium text-black transition hover:bg-black hover:text-white cursor-pointer"
             >
               Cart
             </button>
             <button
               type="button"
               onClick={() => handleNavigate("/checkout")}
-              className="flex-1 rounded-full border border-black px-5 py-2 text-center font-poppins text-xs font-medium text-black transition hover:bg-[#B88E2F] hover:border-[#B88E2F] hover:text-white cursor-pointer"
+              className="flex-1 rounded-full border border-black px-6 py-2.5 text-center font-poppins text-xs font-medium text-black transition hover:bg-[#B88E2F] hover:border-[#B88E2F] hover:text-white cursor-pointer"
             >
               Checkout
             </button>
-            <Link
-              to="/shop"
-              onClick={closeSidebar}
-              className="flex-1 rounded-full border border-black px-5 py-2 text-center font-poppins text-xs font-medium text-black transition hover:bg-black hover:text-white cursor-pointer hidden sm:block"
-            >
-              Comparison
-            </Link>
           </div>
         </div>
       </aside>

@@ -68,22 +68,17 @@ const RightMenu = ({ className }: RightMenuProps) => {
         ) : (
           <Link
             to="/login"
-            className={clsx(LinkHover, "flex items-center text-black")}
+            className={clsx(LinkHover, "flex items-center")}
             title="Entrar na sua conta"
           >
-            <FiUser size={21} />
+            <img
+              src="/Icons/alert.svg"
+              alt="Ícone de login"
+              className="max-h-[18.66px]"
+            />
           </Link>
         )}
       </div>
-
-      {/* Ícone de Alerta */}
-      <button type="button" className={clsx(LinkHover)} title="Notificações">
-        <img
-          src="/Icons/alert.svg"
-          alt="Ícone de alerta"
-          className="max-h-[18.66px]"
-        />
-      </button>
 
       {/* Ícone de Carrinho (Abre o Sidebar Drawer) */}
       <button
