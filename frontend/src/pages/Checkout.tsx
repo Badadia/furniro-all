@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { zodResolver } from "../utils/zodResolver";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router";
 import { z } from "zod";
@@ -38,12 +38,14 @@ export const Checkout = () => {
   const user = useAuthStore((s) => s.user);
   const navigate = useNavigate();
   const [isLoadingCep, setIsLoadingCep] = useState(false);
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<
+    "direct_bank" | "bank_transfer" | "cash_on_delivery"
+  >("direct_bank");
 
   const {
     register,
     handleSubmit,
     setValue,
-    watch,
     formState: { errors, isSubmitting },
   } = useForm<CheckoutFormData>({
     resolver: zodResolver(checkoutSchema),
@@ -53,8 +55,6 @@ export const Checkout = () => {
       paymentMethod: "direct_bank",
     },
   });
-
-  const selectedPaymentMethod = watch("paymentMethod");
 
   // Consulta automática na API do ViaCEP
   const handleZipCodeBlur = async (
@@ -386,6 +386,10 @@ export const Checkout = () => {
                         type="radio"
                         value="direct_bank"
                         {...register("paymentMethod")}
+                        onChange={(e) => {
+                          register("paymentMethod").onChange(e);
+                          setSelectedPaymentMethod("direct_bank");
+                        }}
                         className="accent-black h-4 w-4"
                       />
                       <span className="font-medium">Direct Bank Transfer</span>
@@ -407,6 +411,10 @@ export const Checkout = () => {
                         type="radio"
                         value="bank_transfer"
                         {...register("paymentMethod")}
+                        onChange={(e) => {
+                          register("paymentMethod").onChange(e);
+                          setSelectedPaymentMethod("bank_transfer");
+                        }}
                         className="accent-black h-4 w-4"
                       />
                       <span>Direct Bank Transfer</span>
@@ -419,6 +427,10 @@ export const Checkout = () => {
                         type="radio"
                         value="cash_on_delivery"
                         {...register("paymentMethod")}
+                        onChange={(e) => {
+                          register("paymentMethod").onChange(e);
+                          setSelectedPaymentMethod("cash_on_delivery");
+                        }}
                         className="accent-black h-4 w-4"
                       />
                       <span>Cash On Delivery</span>

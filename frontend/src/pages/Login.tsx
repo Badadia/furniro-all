@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { zodResolver } from "../utils/zodResolver";
 import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router";
 import { z } from "zod";

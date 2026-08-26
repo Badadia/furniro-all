@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { zodResolver } from "../utils/zodResolver";
 import { FaClock, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { z } from "zod";
