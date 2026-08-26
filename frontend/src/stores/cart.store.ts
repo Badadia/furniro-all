@@ -14,6 +14,11 @@ export interface CartItem extends CartProduct {
 
 interface CartState {
   items: CartItem[];
+  isSidebarOpen: boolean;
+
+  openSidebar: () => void;
+  closeSidebar: () => void;
+  toggleSidebar: () => void;
 
   addItem: (product: CartProduct, quantity?: number) => void;
   removeItem: (id: string) => void;
@@ -34,6 +39,11 @@ export const useCartStore = create<CartState>()(
   persist(
     (set, get) => ({
       items: [],
+      isSidebarOpen: false,
+
+      openSidebar: () => set({ isSidebarOpen: true }),
+      closeSidebar: () => set({ isSidebarOpen: false }),
+      toggleSidebar: () => set((state) => ({ isSidebarOpen: !state.isSidebarOpen })),
 
       addItem: (product, quantity = 1) => {
         set((state) => {
