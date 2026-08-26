@@ -27,7 +27,7 @@ export function zodResolver<T extends FieldValues>(
     }
 
     return {
-      values: {} as T,
+      values: {},
       errors: errors as unknown as FieldErrors<T>,
     };
   };
