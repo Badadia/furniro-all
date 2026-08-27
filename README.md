@@ -16,6 +16,7 @@ Este repositório contém o **Desafio 3 da Fase 2** do programa AWS FDE Node.js 
 [Visão geral](#visão-geral) &nbsp;•&nbsp;
 [Novas Funcionalidades](#novas-funcionalidades-etapa-3) &nbsp;•&nbsp;
 [Backend](#backend) &nbsp;•&nbsp;
+[Docker](#executar-o-backend-com-docker) &nbsp;•&nbsp;
 [Frontend](#frontend) &nbsp;•&nbsp;
 [Testes Unitários](#testes-unitários-e-cobertura) &nbsp;•&nbsp;
 [Autor](#autor--author)
@@ -23,6 +24,7 @@ Este repositório contém o **Desafio 3 da Fase 2** do programa AWS FDE Node.js 
 [Overview](#overview) &nbsp;•&nbsp;
 [New Features](#new-features-stage-3) &nbsp;•&nbsp;
 [Backend](#backend-1) &nbsp;•&nbsp;
+[Docker](#running-backend-with-docker) &nbsp;•&nbsp;
 [Frontend](#frontend-1) &nbsp;•&nbsp;
 [Tests & Coverage](#tests-and-coverage) &nbsp;•&nbsp;
 [Author](#author--autor)
@@ -62,7 +64,7 @@ O Furniro é uma plataforma completa de e-commerce de móveis desenvolvida com a
 
 ## Backend
 
-### Como rodar
+### Como rodar localmente
 
 ```bash
 cd backend
@@ -76,6 +78,14 @@ npm run dev
 A API ficará disponível em:
 ```txt
 http://localhost:3000
+```
+
+### Executar o Backend com Docker
+
+```bash
+cd backend
+docker build -t api-furniro .
+docker run -p 3000:3000 --name api-furniro --env-file .env -d api-furniro
 ```
 
 ### Principais endpoints
@@ -147,7 +157,7 @@ npm run test:coverage
 
 Furniro is a full-featured furniture e-commerce platform built with modern architecture. The backend uses SQLite with Prisma ORM and JWT authentication, while the React frontend consumes the API with public and protected routes.
 
-### How to run Backend
+### How to run Backend locally
 
 ```bash
 cd backend
@@ -156,6 +166,14 @@ cp .env.example .env
 npm run db:migrate
 npm run db:seed
 npm run dev
+```
+
+### Running Backend with Docker
+
+```bash
+cd backend
+docker build -t api-furniro .
+docker run -p 3000:3000 --name api-furniro --env-file .env -d api-furniro
 ```
 
 ### How to run Frontend
