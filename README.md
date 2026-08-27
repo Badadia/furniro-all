@@ -9,7 +9,7 @@ Este repositório contém o **Desafio 3 da Fase 2** do programa AWS FDE Node.js 
 
 <div align="center">
 
-## 📑 Sumário / Table of Contents
+## Sumário / Table of Contents
 
 **🇧🇷 [Português](#português)** &nbsp;•&nbsp; **🇺🇸 [English](#english)**
 
@@ -25,7 +25,6 @@ Este repositório contém o **Desafio 3 da Fase 2** do programa AWS FDE Node.js 
 [Backend](#backend-1) &nbsp;•&nbsp;
 [Frontend](#frontend-1) &nbsp;•&nbsp;
 [Tests & Coverage](#tests-and-coverage) &nbsp;•&nbsp;
-[Authors](#authors)
 
 </div>
 
@@ -39,21 +38,21 @@ O Furniro é uma plataforma completa de e-commerce de móveis desenvolvida com a
 
 ### Novas Funcionalidades (Etapa 3)
 
-1. **🔐 Autenticação & JWT**:
+1. **Autenticação & JWT**:
    - Registro e Login de usuários com hash seguro de senhas via `bcryptjs`.
    - Emissão de tokens JWT com expiração de 7 dias e middleware de proteção (`authMiddleware`).
    - Gerenciamento de sessão persistida com Zustand (`useAuthStore`) e interceptor Axios automático.
-2. **🛡️ Rotas Protegidas (`ProtectedRoute`)**:
+2. **Rotas Protegidas (`ProtectedRoute`)**:
    - As páginas `/checkout` e `/contact` são acessíveis apenas por usuários autenticados.
    - Redirecionamento automático para `/login` guardando a rota pretendida (`state.from`).
-3. **🛍️ Cart Sidebar (Drawer Lateral)**:
+3. **Cart Sidebar (Drawer Lateral)**:
    - Gaveta deslizante lateral acionada pelo ícone de carrinho no Header.
    - Scroll interno, exclusão rápida de itens, subtotal e atalhos para `/cart` e `/checkout`.
-4. **📦 Checkout com ViaCEP**:
+4. **Checkout com ViaCEP**:
    - Validação com React Hook Form + Zod.
    - Autopreenchimento automático de endereço (Logradouro, Cidade, Estado e País) ao digitar o CEP.
    - Seleção de forma de pagamento obrigatória e finalização de pedido com Toast.
-5. **📞 Página de Contato (`/contact`)**:
+5. **Página de Contato (`/contact`)**:
    - Dados de contato institucionais e formulário com validação de nome e e-mail.
 
 ---
@@ -72,6 +71,7 @@ npm run dev
 ```
 
 A API ficará disponível em:
+
 ```txt
 http://localhost:3000
 ```
@@ -99,6 +99,7 @@ npm run dev
 ```
 
 A aplicação ficará disponível em:
+
 ```txt
 http://localhost:5173
 ```
@@ -130,16 +131,6 @@ Para gerar o relatório de cobertura de código (**> 90% de cobertura**):
 ```bash
 npm run test:coverage
 ```
-
----
-
-## Autores
-
-- [Bruna Narciso](https://github.com/Bruna-Narciso)
-- [Bryan Belo](https://github.com/Badadia)
-- [Gian Lucas](https://github.com/gkgiann)
-- [Jefferson Tenório](https://github.com/Jefferson-Tenorio)
-- [Tulio Vasconcelos](https://github.com/heytulio)
 
 ---
 

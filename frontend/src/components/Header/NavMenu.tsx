@@ -10,7 +10,7 @@ const NavMenu = ({ className, children }: NavMenuProps) => {
   return (
     <nav
       className={clsx(
-        "w-107.5",
+        "w-full md:w-107.5",
         "flex justify-around",
         "font-poppins text-[16px] text-over-primary",
         "lg:justify-between",
