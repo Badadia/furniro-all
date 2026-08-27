@@ -74,18 +74,18 @@ Acesse em: `http://localhost:5173`.
 
 ## Funcionalidades Chave (Etapa 3)
 
-1. **🔐 Autenticação e Sessão**:
+1. **Autenticação e Sessão**:
    - Tela de Login e Cadastro (`/login`) com validação de campos.
    - Persistência de token JWT e dados do usuário logado.
    - Header dinâmico com badge do usuário e menu de logout.
-2. **🛡️ Rotas Protegidas**:
+2. **Rotas Protegidas**:
    - `/checkout` e `/contact` redirecionam usuários não autenticados para `/login` salvando o redirecionamento pós-login.
-3. **🛍️ Cart Sidebar (Drawer Lateral)**:
+3. **Cart Sidebar (Drawer Lateral)**:
    - Visualização rápida dos itens, exclusão com botão `x`, subtotal e atalhos para `/cart` e `/checkout`.
-4. **📦 Checkout com ViaCEP**:
+4. **Checkout com ViaCEP**:
    - Autopreenchimento automático de endereço ao digitar o CEP no campo "ZIP code".
    - Seleção de forma de pagamento obrigatória e finalização com Toast.
-5. **🛒 Carrinho Isolado por Usuário**:
+5. **Carrinho Isolado por Usuário**:
    - Carrinho individual para cada conta logada, com migração automática dos itens adicionados em modo visitante ao realizar login.
 
 ---
