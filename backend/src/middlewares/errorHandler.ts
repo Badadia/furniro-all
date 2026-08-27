@@ -12,6 +12,7 @@ const errorHandler = (
   if (err instanceof AppError) {
     console.warn(`[${timestamp}] AppError (${err.statusCode}): ${err.message}`);
     res.status(err.statusCode).json({
+      message: err.message,
       error: err.message,
     });
     return;
@@ -23,6 +24,7 @@ const errorHandler = (
     method: req.method,
   });
   res.status(500).json({
+    message: "Internal Server Error",
     error: "Internal Server Error",
   });
 };

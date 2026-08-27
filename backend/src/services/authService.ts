@@ -9,17 +9,17 @@ export class AuthService {
   private jwtSecret: string;
 
   constructor(private userRepository: IUserRepository) {
-    this.jwtSecret = process.env.JWT_SECRET || "furniro_super_secret_jwt_key_2026";
+    this.jwtSecret = process.env.JWT_SECRET || "furniro_production_secure_jwt_secret_2026_@key";
   }
 
   async register(data: UserCreateDTO): Promise<AuthResponseDTO> {
     if (!data.name || !data.email || !data.password) {
-      throw new AppError("Nome, e-mail e senha são obrigatórios", StatusCodes.BAD_REQUEST);
+      throw new AppError("Name, email and password are required", StatusCodes.BAD_REQUEST);
     }
 
     const existingUser = await this.userRepository.findByEmail(data.email.toLowerCase());
     if (existingUser) {
-      throw new AppError("Este e-mail já está cadastrado", StatusCodes.CONFLICT);
+      throw new AppError("This email is already registered", StatusCodes.CONFLICT);
     }
 
     const hashedPassword = await bcrypt.hash(data.password, 10);
@@ -44,17 +44,17 @@ export class AuthService {
 
   async login(data: UserLoginDTO): Promise<AuthResponseDTO> {
     if (!data.email || !data.password) {
-      throw new AppError("E-mail e senha são obrigatórios", StatusCodes.BAD_REQUEST);
+      throw new AppError("Email and password are required", StatusCodes.BAD_REQUEST);
     }
 
     const user = await this.userRepository.findByEmail(data.email.toLowerCase().trim());
     if (!user || !user.password) {
-      throw new AppError("Credenciais inválidas", StatusCodes.UNAUTHORIZED);
+      throw new AppError("Invalid email or password", StatusCodes.UNAUTHORIZED);
     }
 
     const passwordMatch = await bcrypt.compare(data.password, user.password);
     if (!passwordMatch) {
-      throw new AppError("Credenciais inválidas", StatusCodes.UNAUTHORIZED);
+      throw new AppError("Invalid email or password", StatusCodes.UNAUTHORIZED);
     }
 
     const token = this.generateToken(user);
@@ -72,7 +72,7 @@ export class AuthService {
   async getMe(userId: string) {
     const user = await this.userRepository.findById(userId);
     if (!user) {
-      throw new AppError("Usuário não encontrado", StatusCodes.NOT_FOUND);
+      throw new AppError("User not found", StatusCodes.NOT_FOUND);
     }
 
     return {

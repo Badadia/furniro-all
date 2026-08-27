@@ -1,10 +1,11 @@
 import Router, { Request, Response } from "express";
-
 import productFactory from "../factories/productFactory";
+import { authMiddleware } from "../middlewares/authMiddleware";
 
 const productRouter = Router();
 const productController = productFactory.createController();
 
+// Public routes
 productRouter.get("/", (req: Request, res: Response) =>
   productController.getAll(req, res),
 );
@@ -14,13 +15,15 @@ productRouter.get("/slug/:slug", (req: Request, res: Response) =>
 productRouter.get("/:id", (req: Request, res: Response) =>
   productController.findById(req, res),
 );
-productRouter.post("/", (req: Request, res: Response) =>
+
+// Protected routes (require JWT authentication)
+productRouter.post("/", authMiddleware, (req: Request, res: Response) =>
   productController.create(req, res),
 );
-productRouter.put("/:id", (req: Request, res: Response) =>
+productRouter.put("/:id", authMiddleware, (req: Request, res: Response) =>
   productController.update(req, res),
 );
-productRouter.delete("/:id", (req: Request, res: Response) =>
+productRouter.delete("/:id", authMiddleware, (req: Request, res: Response) =>
   productController.delete(req, res),
 );
 
