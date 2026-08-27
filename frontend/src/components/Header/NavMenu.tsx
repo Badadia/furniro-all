@@ -10,7 +10,7 @@ const NavMenu = ({ className, children }: NavMenuProps) => {
   return (
     <nav
       className={clsx(
-        "w-107.5",
+        "w-full md:w-107.5",
         "flex justify-around",
         "font-poppins text-[16px] text-over-primary",
         "lg:justify-between",
@@ -24,7 +24,9 @@ const NavMenu = ({ className, children }: NavMenuProps) => {
         Shop
       </Link>
       <a className={clsx(LinkHover)}>About</a>
-      <a className={clsx(LinkHover)}>Contact</a>
+      <Link to="/contact" className={clsx(LinkHover)}>
+        Contact
+      </Link>
       {children}
     </nav>
   );

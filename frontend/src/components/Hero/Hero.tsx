@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <section className="relative mx-auto mb-64 sm:mb-20 lg:mb-0">
       <img
-        className="max-h-60 w-screen object-cover sm:max-h-70 md:max-h-100 lg:max-h-150 xl:max-h-179"
+        className="max-h-60 w-full object-cover sm:max-h-70 md:max-h-100 lg:max-h-150 xl:max-h-179"
         src={getImage("Hero.jpg")}
         alt="Imagem de interior de sala"
       />

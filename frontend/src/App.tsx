@@ -2,10 +2,14 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import { RootLayout } from "./layout";
 import { ScrollToTop } from "./components/ScrollToTop/ScrollToTop";
 import { Cart } from "./pages/Cart";
+import { Checkout } from "./pages/Checkout";
+import { Contact } from "./pages/Contact";
 import { Home } from "./pages/Home";
+import { Login } from "./pages/Login";
 import { Shop } from "./pages/Shop";
 import { SingleProduct } from "./pages/SingleProduct";
 import { NotFound } from "./components/NotFound";
+import { ProtectedRoute } from "./components/ProtectedRoute/ProtectedRoute";
 
 export default function App() {
   return (
@@ -19,6 +23,14 @@ export default function App() {
           <Route path="/product/:id" element={<SingleProduct />} />
           <Route path="/product/slug/:slug" element={<SingleProduct />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/login" element={<Login />} />
+
+          {/* Rotas Protegidas - Exigem Autenticacao */}
+          <Route element={<ProtectedRoute />}>
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/contact" element={<Contact />} />
+          </Route>
+
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

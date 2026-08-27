@@ -6,7 +6,7 @@ type BenefitItemProps = {
 
 function BenefitItem({ icon, title, description }: BenefitItemProps) {
   return (
-    <div className="min-w-50 flex items-center gap-3 basis-[48%] lg:basis-auto">
+    <div className="w-full sm:w-auto min-w-0 sm:min-w-50 flex items-center gap-3 basis-full sm:basis-[48%] lg:basis-auto">
       <img src={icon} alt={title} className="w-10 h-10 lg:w-auto lg:h-auto" />
 
       <div>
