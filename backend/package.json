@@ -15,9 +15,9 @@
     "seed": "tsx prisma/seed.ts"
   },
   "keywords": [],
-  "author": "Bruna Karla, Bryan, Gian, José Jefferson e Tulio Vasconcelos",
+  "author": "Bryan Belo",
   "license": "ISC",
-  "description": "API RESTful para o desafio 2 do Furniro, utilizando Node.js e Express.",
+  "description": "API RESTful para o desafio 3 do Furniro, utilizando Node.js, Express, Prisma ORM, SQLite e JWT.",
   "dependencies": {
     "@prisma/client": "^6.4.1",
     "axios": "^1.19.0",

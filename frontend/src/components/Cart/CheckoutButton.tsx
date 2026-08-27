@@ -1,23 +1,26 @@
+import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
 import { useCartStore } from "../../stores/cart.store";
 
 export function CheckoutButton() {
-  const clear = useCartStore((s) => s.clearCart);
   const isEmpty = useCartStore((s) => s.isEmpty());
+  const navigate = useNavigate();
 
   function handleCheckout() {
-    if (isEmpty) return;
+    if (isEmpty) {
+      toast.error("Your cart is empty!");
+      return;
+    }
 
-    toast.success("check out realizado com sucesso!");
-    clear();
+    navigate("/checkout");
   }
 
   return (
     <button
-      className="w-fit text-[20px] py-3.5 px-14.5 rounded-2xl border border-black cursor-pointer transition hover:scale-102"
+      className="w-fit text-[20px] py-3.5 px-14.5 rounded-2xl border border-black cursor-pointer transition hover:bg-black hover:text-white"
       onClick={handleCheckout}
     >
-      Checkout
+      Check Out
     </button>
   );
 }
