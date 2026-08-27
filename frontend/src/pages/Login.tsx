@@ -64,9 +64,13 @@ export const Login = () => {
       toast.success(`Welcome back, ${res.user.name}!`);
       navigate(redirectPath, { replace: true });
     } catch (err: unknown) {
+      const responseData = (
+        err as { response?: { data?: { message?: string; error?: string } } }
+      )?.response?.data;
       const errorMsg =
-        (err as { response?: { data?: { message?: string } } })?.response?.data
-          ?.message || "Failed to sign in. Please check your credentials.";
+        responseData?.message ||
+        responseData?.error ||
+        "Failed to sign in. Please check your credentials.";
       setServerError(errorMsg);
       toast.error(errorMsg);
     }
@@ -84,9 +88,13 @@ export const Login = () => {
       toast.success(`Account created successfully! Welcome, ${res.user.name}!`);
       navigate(redirectPath, { replace: true });
     } catch (err: unknown) {
+      const responseData = (
+        err as { response?: { data?: { message?: string; error?: string } } }
+      )?.response?.data;
       const errorMsg =
-        (err as { response?: { data?: { message?: string } } })?.response?.data
-          ?.message || "Failed to create account. Please try again.";
+        responseData?.message ||
+        responseData?.error ||
+        "Failed to create account. Please try again.";
       setServerError(errorMsg);
       toast.error(errorMsg);
     }

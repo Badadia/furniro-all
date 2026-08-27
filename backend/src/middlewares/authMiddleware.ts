@@ -21,22 +21,22 @@ export function authMiddleware(
   const authHeader = req.headers.authorization;
 
   if (!authHeader) {
-    throw new AppError("Token de autenticação não fornecido", StatusCodes.UNAUTHORIZED);
+    throw new AppError("Authentication token not provided", StatusCodes.UNAUTHORIZED);
   }
 
   const parts = authHeader.split(" ");
   if (parts.length !== 2 || parts[0] !== "Bearer") {
-    throw new AppError("Formato de token inválido", StatusCodes.UNAUTHORIZED);
+    throw new AppError("Invalid token format", StatusCodes.UNAUTHORIZED);
   }
 
   const token = parts[1];
-  const jwtSecret = process.env.JWT_SECRET || "furniro_super_secret_jwt_key_2026";
+  const jwtSecret = process.env.JWT_SECRET || "furniro_production_secure_jwt_secret_2026_@key";
 
   try {
     const decoded = jwt.verify(token, jwtSecret) as AuthenticatedUser;
     req.user = decoded;
     next();
   } catch (error) {
-    throw new AppError("Token inválido ou expirado", StatusCodes.UNAUTHORIZED);
+    throw new AppError("Invalid or expired token", StatusCodes.UNAUTHORIZED);
   }
 }
