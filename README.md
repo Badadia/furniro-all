@@ -43,8 +43,8 @@ O Furniro é uma plataforma completa de e-commerce de móveis desenvolvida com a
 
 1. **🔐 Autenticação & JWT**:
    - Registro e Login de usuários com hash seguro de senhas via `bcryptjs`.
-   - Emissão de tokens JWT com expiração de 7 dias e middleware de proteção (`authMiddleware`).
-   - Gerenciamento de sessão persistida com Zustand (`useAuthStore`) e interceptor Axios automático.
+   - Emissão de tokens JWT com expiração de 24 horas (1 dia) e middleware de proteção (`authMiddleware`).
+   - Gerenciamento de sessão persistida com Zustand (`useAuthStore`) e interceptor Axios para logout automático em caso de 401.
 2. **🛡️ Rotas Protegidas (`ProtectedRoute`)**:
    - As páginas `/checkout` e `/contact` são acessíveis apenas por usuários autenticados.
    - Redirecionamento automático para `/login` guardando a rota pretendida (`state.from`).

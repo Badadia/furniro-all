@@ -104,8 +104,8 @@ O backend ficará disponível em `http://localhost:3000`.
 
 ### Autenticação (`/auth`)
 
-- `POST /auth/register` — Cadastro de novo usuário (`name`, `email`, `password`)
-- `POST /auth/login` — Autenticação de usuário com retorno de token JWT
+- `POST /auth/register` — Cadastro de novo usuário com validação de dados (`name` >= 2 caracteres, e-mail válido, `password` >= 6 caracteres)
+- `POST /auth/login` — Autenticação de usuário com retorno de token JWT (expiração: 24 horas)
 - `GET /auth/me` — Dados do perfil do usuário autenticado (requer `Authorization: Bearer <token>`)
 
 ### Produtos (`/products`)
