@@ -17,7 +17,20 @@ export class AuthService {
       throw new AppError("Name, email and password are required", StatusCodes.BAD_REQUEST);
     }
 
-    const existingUser = await this.userRepository.findByEmail(data.email.toLowerCase());
+    if (data.name.trim().length < 2) {
+      throw new AppError("Name must be at least 2 characters", StatusCodes.BAD_REQUEST);
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(data.email.trim())) {
+      throw new AppError("Please enter a valid email address", StatusCodes.BAD_REQUEST);
+    }
+
+    if (data.password.length < 6) {
+      throw new AppError("Password must be at least 6 characters", StatusCodes.BAD_REQUEST);
+    }
+
+    const existingUser = await this.userRepository.findByEmail(data.email.toLowerCase().trim());
     if (existingUser) {
       throw new AppError("This email is already registered", StatusCodes.CONFLICT);
     }
@@ -90,7 +103,7 @@ export class AuthService {
         email: user.email,
       },
       this.jwtSecret,
-      { expiresIn: "7d" }
+      { expiresIn: "24h" }
     );
   }
 }
