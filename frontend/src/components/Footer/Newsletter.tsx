@@ -2,7 +2,7 @@ import { useState, type SubmitEvent } from "react";
 import toast from "react-hot-toast";
 import { z } from "zod/v4";
 
-const emailSchema = z.email("Digite um e-mail válido.");
+const emailSchema = z.email("Please enter a valid email address.");
 
 export function Newsletter() {
   const [email, setEmail] = useState("");
@@ -18,7 +18,7 @@ export function Newsletter() {
     }
 
     setError("");
-    toast.success("Inscrição realizada com sucesso!", {
+    toast.success("Subscribed successfully!", {
       position: "bottom-right",
     });
     setEmail("");

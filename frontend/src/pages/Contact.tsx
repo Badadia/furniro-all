@@ -7,8 +7,8 @@ import Benefits from "../components/Benefits/Benefits";
 import PageBanner from "../components/Shop/PageBanner";
 
 const contactSchema = z.object({
-  name: z.string().min(2, "Por favor, informe seu nome"),
-  email: z.string().email("Digite um e-mail válido"),
+  name: z.string().min(2, "Please enter your name"),
+  email: z.string().email("Please enter a valid email address"),
   subject: z.string().optional(),
   message: z.string().optional(),
 });
@@ -26,9 +26,9 @@ export const Contact = () => {
   });
 
   const onSubmit = (data: ContactFormData) => {
-    // Simula o envio da mensagem
+    // Simulates message delivery
     console.log("Contact form submitted:", data);
-    toast.success("Mensagem enviada com sucesso! Entraremos em contato em breve.");
+    toast.success("Message sent successfully! We will get back to you soon.");
     reset();
   };
 

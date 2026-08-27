@@ -31,8 +31,8 @@ describe("Contact Page", () => {
     await user.click(screen.getByRole("button", { name: "Submit" }));
 
     await waitFor(() => {
-      expect(screen.getByText("Por favor, informe seu nome")).toBeInTheDocument();
-      expect(screen.getByText("Digite um e-mail válido")).toBeInTheDocument();
+      expect(screen.getByText("Please enter your name")).toBeInTheDocument();
+      expect(screen.getByText("Please enter a valid email address")).toBeInTheDocument();
     });
   });
 
@@ -46,13 +46,13 @@ describe("Contact Page", () => {
 
     await user.type(screen.getByPlaceholderText("Abc"), "Bryan Belo");
     await user.type(screen.getByPlaceholderText("Abc@def.com"), "bryan@example.com");
-    await user.type(screen.getByPlaceholderText("This is an optional"), "Dúvida sobre produtos");
-    await user.type(screen.getByPlaceholderText("Hi! I'd like to ask about"), "Gostaria de mais detalhes sobre o sofá.");
+    await user.type(screen.getByPlaceholderText("This is an optional"), "Question about products");
+    await user.type(screen.getByPlaceholderText("Hi! I'd like to ask about"), "I would like more details about the sofa.");
 
     await user.click(screen.getByRole("button", { name: "Submit" }));
 
     await waitFor(() => {
-      expect(screen.queryByText("Por favor, informe seu nome")).not.toBeInTheDocument();
+      expect(screen.queryByText("Please enter your name")).not.toBeInTheDocument();
     });
   });
 });

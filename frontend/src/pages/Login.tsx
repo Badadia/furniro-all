@@ -10,19 +10,19 @@ import { loginUser, registerUser } from "../services/auth.service";
 import { useAuthStore } from "../stores/auth.store";
 
 const loginSchema = z.object({
-  email: z.string().email("Digite um e-mail válido"),
-  password: z.string().min(6, "A senha deve ter no mínimo 6 caracteres"),
+  email: z.string().email("Please enter a valid email address"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
 const registerSchema = z
   .object({
-    name: z.string().min(2, "O nome deve ter no mínimo 2 caracteres"),
-    email: z.string().email("Digite um e-mail válido"),
-    password: z.string().min(6, "A senha deve ter no mínimo 6 caracteres"),
-    confirmPassword: z.string().min(6, "Confirme sua senha"),
+    name: z.string().min(2, "Name must be at least 2 characters"),
+    email: z.string().email("Please enter a valid email address"),
+    password: z.string().min(6, "Password must be at least 6 characters"),
+    confirmPassword: z.string().min(6, "Please confirm your password"),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "As senhas não coincidem",
+    message: "Passwords do not match",
     path: ["confirmPassword"],
   });
 
@@ -61,12 +61,12 @@ export const Login = () => {
       setServerError(null);
       const res = await loginUser(data);
       setAuth(res.user, res.token);
-      toast.success(`Bem-vindo de volta, ${res.user.name}!`);
+      toast.success(`Welcome back, ${res.user.name}!`);
       navigate(redirectPath, { replace: true });
     } catch (err: unknown) {
       const errorMsg =
         (err as { response?: { data?: { message?: string } } })?.response?.data
-          ?.message || "Falha ao realizar login. Verifique suas credenciais.";
+          ?.message || "Failed to sign in. Please check your credentials.";
       setServerError(errorMsg);
       toast.error(errorMsg);
     }
@@ -81,12 +81,12 @@ export const Login = () => {
         password: data.password,
       });
       setAuth(res.user, res.token);
-      toast.success(`Conta criada com sucesso! Bem-vindo, ${res.user.name}!`);
+      toast.success(`Account created successfully! Welcome, ${res.user.name}!`);
       navigate(redirectPath, { replace: true });
     } catch (err: unknown) {
       const errorMsg =
         (err as { response?: { data?: { message?: string } } })?.response?.data
-          ?.message || "Falha ao criar conta. Tente novamente.";
+          ?.message || "Failed to create account. Please try again.";
       setServerError(errorMsg);
       toast.error(errorMsg);
     }

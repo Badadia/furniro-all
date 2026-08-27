@@ -46,10 +46,10 @@ describe("CartSidebar", () => {
       </MemoryRouter>,
     );
 
-    await user.click(screen.getByRole("button", { name: "Remover Asgaard sofa do carrinho" }));
+    await user.click(screen.getByRole("button", { name: "Remove Asgaard sofa from cart" }));
 
     expect(useCartStore.getState().items.length).toBe(0);
-    expect(screen.getByText("Seu carrinho está vazio.")).toBeInTheDocument();
+    expect(screen.getByText("Your cart is empty.")).toBeInTheDocument();
   });
 
   it("should close sidebar when clicking close button", async () => {
@@ -60,7 +60,7 @@ describe("CartSidebar", () => {
       </MemoryRouter>,
     );
 
-    await user.click(screen.getByRole("button", { name: "Fechar carrinho" }));
+    await user.click(screen.getByRole("button", { name: "Close cart" }));
 
     expect(useCartStore.getState().isSidebarOpen).toBe(false);
   });

@@ -12,19 +12,19 @@ import { useCartStore } from "../stores/cart.store";
 import { calculateDiscount, formatPrice } from "../utils/price";
 
 const checkoutSchema = z.object({
-  firstName: z.string().min(2, "Informe seu primeiro nome"),
-  lastName: z.string().min(2, "Informe seu sobrenome"),
+  firstName: z.string().min(2, "First name is required"),
+  lastName: z.string().min(2, "Last name is required"),
   companyName: z.string().optional(),
-  zipCode: z.string().min(8, "Informe um CEP válido (8 dígitos)"),
-  country: z.string().min(2, "Informe o país"),
-  streetAddress: z.string().min(3, "Informe o endereço"),
-  city: z.string().min(2, "Informe a cidade"),
-  province: z.string().min(2, "Informe o estado/província"),
+  zipCode: z.string().min(8, "Please enter a valid 8-digit ZIP code"),
+  country: z.string().min(2, "Country is required"),
+  streetAddress: z.string().min(3, "Street address is required"),
+  city: z.string().min(2, "Town / City is required"),
+  province: z.string().min(2, "Province / State is required"),
   addonAddress: z.string().optional(),
-  email: z.string().email("Digite um e-mail válido"),
+  email: z.string().email("Please enter a valid email address"),
   additionalInfo: z.string().optional(),
   paymentMethod: z.enum(["direct_bank", "bank_transfer", "cash_on_delivery"], {
-    message: "Selecione uma forma de pagamento para continuar",
+    message: "Please select a payment method to continue",
   }),
 });
 
@@ -56,7 +56,7 @@ export const Checkout = () => {
     },
   });
 
-  // Consulta automática na API do ViaCEP
+  // Automatic ViaCEP lookup
   const handleZipCodeBlur = async (
     e: React.FocusEvent<HTMLInputElement>,
   ) => {
@@ -73,21 +73,21 @@ export const Checkout = () => {
         setValue("city", address.localidade || "");
         setValue("province", address.uf || "");
         setValue("country", "Brazil");
-        toast.success("Endereço preenchido automaticamente via CEP!");
+        toast.success("Address filled automatically from ZIP code!");
       } else {
-        toast.error("CEP não encontrado. Preencha os campos manualmente.");
+        toast.error("ZIP code not found. Please fill fields manually.");
       }
     }
   };
 
   const onSubmit = (data: CheckoutFormData) => {
     if (items.length === 0) {
-      toast.error("Seu carrinho está vazio!");
+      toast.error("Your cart is empty!");
       return;
     }
 
     console.log("Order placed successfully:", data);
-    toast.success("Pedido realizado com sucesso! Obrigado pela sua compra!", {
+    toast.success("Order placed successfully! Thank you for your purchase!", {
       duration: 5000,
     });
     clearCart();
@@ -173,7 +173,7 @@ export const Checkout = () => {
                   ZIP code
                   {isLoadingCep && (
                     <span className="ml-2 text-xs text-[#B88E2F]">
-                      (Consultando CEP...)
+                      (Looking up ZIP code...)
                     </span>
                   )}
                 </label>
@@ -335,9 +335,9 @@ export const Checkout = () => {
                 <div className="space-y-4 max-h-[300px] overflow-y-auto pr-1">
                   {items.length === 0 ? (
                     <div className="py-4 text-center text-[#9F9F9F] font-poppins text-sm">
-                      Nenhum produto selecionado.{" "}
+                      No products selected.{" "}
                       <Link to="/shop" className="text-[#B88E2F] underline">
-                        Ir para a loja
+                        Go to shop
                       </Link>
                     </div>
                   ) : (

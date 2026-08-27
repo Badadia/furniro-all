@@ -23,12 +23,12 @@ const RightMenu = ({ className }: RightMenuProps) => {
   const handleLogout = () => {
     logout();
     setShowUserMenu(false);
-    toast.success("Logout realizado com sucesso!");
+    toast.success("Logged out successfully!");
   };
 
   return (
     <div className={clsx("flex items-center gap-[33.66px]", className)}>
-      {/* Ícone de Usuário / Login / Logout */}
+      {/* User / Login / Logout trigger */}
       <div className="relative">
         {isAuthenticated && user ? (
           <div className="relative">
@@ -39,7 +39,7 @@ const RightMenu = ({ className }: RightMenuProps) => {
                 LinkHover,
                 "flex items-center gap-1.5 rounded-full bg-[#FAF3EA] px-3 py-1 text-xs font-medium text-[#B88E2F] border border-[#B88E2F]/30",
               )}
-              title={`Logado como ${user.name}`}
+              title={`Logged in as ${user.name}`}
             >
               <FiUser size={16} />
               <span className="max-w-[70px] truncate">{user.name.split(" ")[0]}</span>
@@ -60,7 +60,7 @@ const RightMenu = ({ className }: RightMenuProps) => {
                   className="flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-xs font-medium text-red-600 hover:bg-red-50 transition cursor-pointer"
                 >
                   <FiLogOut size={14} />
-                  Sair da conta
+                  Sign out
                 </button>
               </div>
             )}
@@ -69,28 +69,28 @@ const RightMenu = ({ className }: RightMenuProps) => {
           <Link
             to="/login"
             className={clsx(LinkHover, "flex items-center")}
-            title="Entrar na sua conta"
+            title="Sign in to your account"
           >
             <img
               src="/Icons/alert.svg"
-              alt="Ícone de login"
+              alt="Login icon"
               className="max-h-[18.66px]"
             />
           </Link>
         )}
       </div>
 
-      {/* Ícone de Carrinho (Abre o Sidebar Drawer) */}
+      {/* Cart Icon (Opens Sidebar Drawer) */}
       <button
         type="button"
         onClick={toggleSidebar}
         className={clsx(LinkHover, "relative flex items-center cursor-pointer")}
-        title="Abrir carrinho"
-        aria-label="Abrir carrinho"
+        title="Open shopping cart"
+        aria-label="Open shopping cart"
       >
         <img
           src="/Icons/shop.svg"
-          alt="Ícone de carrinho"
+          alt="Cart icon"
           className="max-h-[22.05px]"
         />
         {totalItems > 0 && (

@@ -58,7 +58,7 @@ export const CartSidebar = () => {
               type="button"
               onClick={closeSidebar}
               className="text-[#9F9F9F] hover:text-black transition cursor-pointer p-1"
-              aria-label="Fechar carrinho"
+              aria-label="Close cart"
             >
               <FiLock size={20} className="hidden" />
               <FiX size={22} className="text-[#9F9F9F] hover:text-black" />
@@ -67,11 +67,11 @@ export const CartSidebar = () => {
 
           <div className="mt-6 mb-6 h-[1px] w-3/4 bg-[#D9D9D9]" />
 
-          {/* Lista de itens com scroll interno */}
+          {/* Items list with internal scroll */}
           <div className="max-h-[calc(100vh-280px)] overflow-y-auto pr-2 space-y-5">
             {items.length === 0 ? (
               <div className="py-12 text-center text-[#9F9F9F] font-poppins text-sm">
-                Seu carrinho está vazio.
+                Your cart is empty.
               </div>
             ) : (
               items.map((item) => {
@@ -110,7 +110,7 @@ export const CartSidebar = () => {
                       type="button"
                       onClick={() => removeItem(item.id)}
                       className="text-[#9F9F9F] hover:text-black transition cursor-pointer flex-shrink-0"
-                      aria-label={`Remover ${item.name} do carrinho`}
+                      aria-label={`Remove ${item.name} from cart`}
                     >
                       <IoCloseCircle size={22} />
                     </button>
